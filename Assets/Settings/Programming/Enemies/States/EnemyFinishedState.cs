@@ -12,7 +12,7 @@ namespace Settings.Programming.Enemies.States
             Debug.Log($"Current state: {GetType().Name}");
             
             EnemyController.OnFinishedEvent();
-            enemyController.Destroy();
+            EnemyController.Destroy();
         }
 
         protected override void Exit()

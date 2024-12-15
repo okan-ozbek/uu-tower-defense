@@ -19,12 +19,12 @@ namespace Settings.Programming.Enemies.States
 
         protected override void TransitionConditions()
         {
-            if (enemyController.WaypointContainer.ReachedLastWaypoint())
+            if (EnemyController.WaypointContainer.ReachedLastWaypoint())
             {
                 TransitionTo(EnemyStateType.Finished);
             }
 
-            if (enemyController.Stats.IsAlive() == false)
+            if (EnemyController.Stats.IsAlive() == false)
             {
                 TransitionTo(EnemyStateType.Death);
             }

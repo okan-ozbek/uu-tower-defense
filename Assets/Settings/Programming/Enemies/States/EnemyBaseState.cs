@@ -6,11 +6,11 @@ namespace Settings.Programming.Enemies.States
     {
         public EnemyStateType StateType { get; protected set; }
         
-        protected readonly EnemyController enemyController;
+        protected readonly EnemyController EnemyController;
 
         protected EnemyBaseState(EnemyController enemyController, EnemyStateType stateType)
         {
-            this.enemyController = enemyController;
+            EnemyController = enemyController;
             StateType = stateType;
         }
         
@@ -26,9 +26,9 @@ namespace Settings.Programming.Enemies.States
 
         protected void TransitionTo(EnemyStateType stateType)
         {
-            enemyController.State.Exit();
-            enemyController.State = enemyController.Factory.GetState(stateType);
-            enemyController.State.Enter();
+            EnemyController.State.Exit();
+            EnemyController.State = EnemyController.Factory.GetState(stateType);
+            EnemyController.State.Enter();
         }
     }
 }
