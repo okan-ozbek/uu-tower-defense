@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Settings.Programming.Configs
 {
+    [CreateAssetMenu(fileName = "ObjectStatConfig", menuName = "Settings/Configs/ObjectStatConfig")]
     public class ObjectStatConfig : ScriptableObject
     {
         public float range;

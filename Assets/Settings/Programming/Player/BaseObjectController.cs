@@ -7,35 +7,24 @@ using UnityEngine;
 
 namespace Settings.Programming.Player
 {
-    public class ObjectController : MonoBehaviour
+    public abstract class BaseObjectController : MonoBehaviour
     {
         [SerializeField] ObjectStatConfig objectStatConfig;
 
         public ObjectStats Stats;
 
-        private IAttackStrategy _attackStrategy;
-        private PathHandler _pathHandler;
-        private Vector3 _defaultRotation;
+        protected IAttackStrategy AttackStrategy;
+        protected PathHandler PathHandler;
 
-        private void Awake()
+        protected void InitializeObject()
         {
             Stats = new ObjectStats(objectStatConfig, new StatMediator());
-            _attackStrategy = (new AttackStrategyFactory(Stats)).GetAttack(objectStatConfig.attackType);
-            _pathHandler = new PathHandler(GameObject.FindWithTag(Tag.Path.ToString()).transform);
-            LookAt(null);
-        }
-        
-        private void FixedUpdate()
-        {
-            GameObject closestEnemy = GetClosestEnemy();
-            LookAt(closestEnemy);
-            _attackStrategy.Shoot(closestEnemy);
-            
-            if (closestEnemy)
-                Debug.DrawLine(transform.position, closestEnemy.transform.position, Color.green);
+            PathHandler = new PathHandler(GameObject.FindWithTag(Tag.Path.ToString()).transform);
+            AttackStrategy = new AttackStrategyFactory(this).GetStrategy(Stats.AttackType);
+            LookAtTarget(null);
         }
 
-        private GameObject GetClosestEnemy()
+        protected GameObject GetClosestEnemy()
         {
             GameObject closestEnemy = null;
             float closestDistance = float.MaxValue;
@@ -58,11 +47,16 @@ namespace Settings.Programming.Player
             return closestEnemy;
         }
 
-        private void LookAt(GameObject target)
+        public Transform GetClosestWaypoint()
         {
-            Transform lookAt = (target) 
-                ? target.transform 
-                : _pathHandler.GetClosestWaypoint(new Vector2(transform.position.x, transform.position.y));
+            return PathHandler.GetClosestWaypoint(new Vector2(transform.position.x, transform.position.y));
+        }
+
+        protected void LookAtTarget(GameObject target)
+        {
+            Transform lookAt = (target)
+                ? target.transform
+                : GetClosestWaypoint();
             
             if (lookAt)
             {

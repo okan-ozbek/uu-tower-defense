@@ -9,6 +9,10 @@ namespace Settings.Programming.Interactables
     [RequireComponent(typeof(Collider2D))]
     public class GooController : MonoBehaviour
     {
+        /*
+         * TODO all interactables are removed when enemy interacts with it
+         */
+        
         public InteractableConfig config;
         private StatModifier _statModifier;
 
@@ -26,7 +30,8 @@ namespace Settings.Programming.Interactables
         {
             if (other.CompareTag(Tag.Enemy.ToString()))
             {
-                other.GetComponent<EnemyController>().Stats.Mediator.Add(_statModifier);
+                EnemyController enemyController = other.GetComponent<EnemyController>();
+                enemyController.Stats.Mediator.Add(_statModifier);
                 Destroy(gameObject);
             }
         }

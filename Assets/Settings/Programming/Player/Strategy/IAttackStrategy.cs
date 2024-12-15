@@ -4,6 +4,6 @@ namespace Settings.Programming.Player.Strategy
 {
     public interface IAttackStrategy
     {
-        public void Shoot(GameObject target);
+        public void Use(GameObject target);
     }
 }

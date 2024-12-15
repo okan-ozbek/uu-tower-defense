@@ -6,20 +6,20 @@ namespace Settings.Programming.Player.Strategy
 {
     public class HitScanStrategy : IAttackStrategy
     {
-        private readonly ObjectStats _stats;
+        private readonly BaseObjectController _objectController;
         
-        public HitScanStrategy(ObjectStats stats)
+        public HitScanStrategy(BaseObjectController objectController)
         {
-            _stats = stats;
+            _objectController = objectController;
         }
         
-        public void Shoot(GameObject target)
+        public void Use(GameObject target)
         {
-            if (target && _stats.HasReloaded)
+            if (target && _objectController.Stats.HasReloaded)
             {
                 Debug.Log($"Shot enemy hitscan");
-                target.GetComponent<EnemyController>().Stats.TakeDamage(_stats.Attack.GetCurrentValue(), OperatorType.Subtraction);
-                _stats.ResetReloadTime();
+                target.GetComponent<EnemyController>().TakeDamage(_objectController.Stats.Attack.GetCurrentValue(), OperatorType.Subtraction);
+                _objectController.Stats.ResetReloadTime();
             }
         }
     }

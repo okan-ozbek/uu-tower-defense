@@ -4,14 +4,14 @@ namespace Settings.Programming.Player.Strategy
 {
     public class ProjectileStrategy : IAttackStrategy
     {
-        private readonly ObjectStats _stats;
+        private readonly BaseObjectController _objectController;
         
-        public ProjectileStrategy(ObjectStats stats)
+        public ProjectileStrategy(BaseObjectController objectController)
         {
-            _stats = stats;
+            _objectController = objectController;
         }
 
-        public void Shoot(GameObject target)
+        public void Use(GameObject target)
         {
             // Pew pew
         }

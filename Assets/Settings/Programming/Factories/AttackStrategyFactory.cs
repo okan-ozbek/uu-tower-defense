@@ -5,17 +5,18 @@ using Settings.Programming.Player.Strategy;
 
 namespace Settings.Programming.Factories
 {
-    public class AttackStrategyFactory
+    public sealed class AttackStrategyFactory
     {
-        private Dictionary<AttackType, IAttackStrategy> _strategies = new();
-
-        public AttackStrategyFactory(ObjectStats stats)
+        private readonly Dictionary<AttackType, IAttackStrategy> _strategies = new();
+        
+        public AttackStrategyFactory(BaseObjectController objectController)
         {
-            _strategies[AttackType.Hitscan] = new HitScanStrategy(stats);
-            _strategies[AttackType.Projectile] = new ProjectileStrategy(stats);
+            _strategies[AttackType.Hitscan] = new HitScanStrategy(objectController);
+            _strategies[AttackType.Projectile] = new ProjectileStrategy(objectController);
+            _strategies[AttackType.Interactable] = new InteractableStrategy(objectController);
         }
-
-        public IAttackStrategy GetAttack(AttackType type)
+        
+        public IAttackStrategy GetStrategy(AttackType type)
         {
             return _strategies[type];
         }

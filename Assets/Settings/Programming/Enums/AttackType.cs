@@ -4,5 +4,6 @@
     {
         Hitscan = 0,
         Projectile = 1,
+        Interactable = 2
     }
 }

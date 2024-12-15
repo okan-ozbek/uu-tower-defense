@@ -11,8 +11,9 @@ namespace Settings.Programming.Player
         public readonly Stat<float> Range;
         public readonly Stat<float> Attack;
         public readonly Stat<float> ReloadTime;
+        public AttackType AttackType { get; }
         
-        private ObjectStatConfig _objectStatConfig;
+        private readonly ObjectStatConfig _objectStatConfig;
 
         public ObjectStats(ObjectStatConfig objectStatConfig, StatMediator mediator)
         {
@@ -23,6 +24,7 @@ namespace Settings.Programming.Player
             Range = new Stat<float>(Mediator, StatType.Health, objectStatConfig.range);
             Attack = new Stat<float>(Mediator, StatType.Attack, objectStatConfig.attack);
             ReloadTime = new Stat<float>(Mediator, StatType.Speed, objectStatConfig.reloadTime, true);
+            AttackType = objectStatConfig.attackType;
         }
 
         public bool HasReloaded => _objectStatConfig.HasReloaded();

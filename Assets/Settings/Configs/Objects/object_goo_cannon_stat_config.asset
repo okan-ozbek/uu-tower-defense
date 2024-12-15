@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9eaff1a2c8d64729b9451ec025399619, type: 3}
-  m_Name: interactable_goo_test_config
+  m_Script: {fileID: 11500000, guid: d86e09fcafe3443c83b0cfd747f0089f, type: 3}
+  m_Name: object_goo_cannon_stat_config
   m_EditorClassIdentifier: 
-  modification: 0
-  duration: 0
-  statType: 0
-  mathType: 0
+  range: 1.5
+  attack: 0
+  reloadTime: 2
+  attackType: 2

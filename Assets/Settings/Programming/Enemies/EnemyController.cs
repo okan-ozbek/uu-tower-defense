@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Settings.Programming.Configs;
 using Settings.Programming.Enemies.Pathfinding;
 using Settings.Programming.Enemies.States;
@@ -23,6 +24,7 @@ namespace Settings.Programming.Enemies
         
         public static event Action OnFinished;
         public static event Action OnDeath;
+        public event Action OnTakeDamage;
 
         private void Awake()
         {
@@ -49,6 +51,25 @@ namespace Settings.Programming.Enemies
             Factory = new EnemyStateFactory(this);
             State = Factory.GetState(EnemyStateType.Start);
             State.Enter();
+        }
+        
+        public void TakeDamage(float damage, OperatorType operatorType)
+        {
+            Stats.TakeDamage(damage, operatorType);
+            StartCoroutine(HurtEffect());
+            
+            OnTakeDamage?.Invoke();
+        }
+
+        private IEnumerator HurtEffect()
+        {
+            SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+            Color originalColor = spriteRenderer.color;
+            
+            spriteRenderer.color = Color.white;
+            yield return new WaitForSeconds(0.4f);
+            spriteRenderer.color = originalColor;
+
         }
         
         public static void OnDeathEvent()
