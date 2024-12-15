@@ -6,6 +6,7 @@ namespace Settings.Programming.Stats
 {
     public class Stat<T> where T : struct, IComparable, IConvertible, IFormattable
     {
+        private readonly OperatorStrategyFactory _operatorStrategy;
         private readonly StatMediator _mediator;
         private readonly StatType _statType;
         private readonly bool _matchBaseValue;
@@ -31,12 +32,13 @@ namespace Settings.Programming.Stats
 
         public void SetCurrentValue(T amount, OperatorType operatorType)
         {
-            _currentValue = (T)Convert.ChangeType(OperatorStrategyFactory.Create(operatorType).Calculate(Convert.ToSingle(_currentValue), Convert.ToSingle(amount)), typeof(T));
+            _currentValue = (T)Convert.ChangeType(_operatorStrategy.GetOperator(operatorType).Calculate(Convert.ToSingle(_currentValue), Convert.ToSingle(amount)), typeof(T));
             _currentValue = GetCurrentValueNotExceededBaseValue();
         }
 
         public Stat(StatMediator mediator, StatType statType, T baseValue, bool matchBaseValue = false)
         {
+            _operatorStrategy = new OperatorStrategyFactory();
             _mediator = mediator;
             _statType = statType;
 

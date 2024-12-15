@@ -11,11 +11,14 @@ namespace Settings.Programming.Stats
         private readonly float _value;
         private readonly float _duration;
         private readonly OperatorType _operatorType;
+        private readonly OperatorStrategyFactory _operatorStrategy;
         
         private float _elapsedTime;
         
         public StatModifier(float value, float duration, StatType statType, OperatorType operatorType)
         {
+            _operatorStrategy = new OperatorStrategyFactory();
+            
             _value = value;
             _duration = duration;
             _operatorType = operatorType;
@@ -24,7 +27,7 @@ namespace Settings.Programming.Stats
 
         public float Calculate(float queryValue)
         {
-            return OperatorStrategyFactory.Create(_operatorType).Calculate(queryValue, _value);
+            return _operatorStrategy.GetOperator(_operatorType).Calculate(queryValue, _value);
         }
 
         public void Update(float deltaTime)

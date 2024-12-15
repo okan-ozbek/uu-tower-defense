@@ -14,6 +14,7 @@ namespace Settings.Programming.Factories
             _states[EnemyStateType.Start] = new EnemyStartState(enemyController);
             _states[EnemyStateType.InProgress] = new EnemyInProgressState(enemyController);
             _states[EnemyStateType.Finished] = new EnemyFinishedState(enemyController);
+            _states[EnemyStateType.Death] = new EnemyDeathState(enemyController);
         }
         
         public EnemyBaseState GetState(EnemyStateType stateType)

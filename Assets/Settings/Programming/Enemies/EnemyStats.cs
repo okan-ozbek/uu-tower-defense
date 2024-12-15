@@ -25,5 +25,10 @@ namespace Settings.Programming.Enemies
         {
             return Health.GetCurrentValue() > 0;
         }
+        
+        public void TakeDamage(float amount, OperatorType operatorType)
+        {
+            Health.SetCurrentValue(amount, operatorType);
+        }
     }
 }
