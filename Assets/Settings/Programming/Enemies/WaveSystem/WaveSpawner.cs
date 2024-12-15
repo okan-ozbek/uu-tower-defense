@@ -28,7 +28,6 @@ namespace Settings.Programming.Enemies.WaveSystem
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                Debug.Log("Clicked Space");
                 GenerateWave();
                 SpawnWave();
             }
