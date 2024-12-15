@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eaff1a2c8d64729b9451ec025399619, type: 3}
   m_Name: interactable_goo_test_config
   m_EditorClassIdentifier: 
-  modification: 2
+  modification: 1
   duration: 5
   statType: 2
-  operatorType: 3
+  operatorType: 1
