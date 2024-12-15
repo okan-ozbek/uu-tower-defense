@@ -11,6 +11,12 @@ namespace Settings.Programming.Interactables
     {
         /*
          * TODO all interactables are removed when enemy interacts with it
+         * We could add a status effect to the enemy
+         * Then check if the enemy is affeected by the status effect
+         * if yes
+         *    then apply the effect and destroy the interactable
+         * if no
+         *    then dont do anything
          */
         
         public InteractableConfig config;
