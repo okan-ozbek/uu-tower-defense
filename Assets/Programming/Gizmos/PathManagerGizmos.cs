@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Settings.Programming.Gizmos
+namespace Programming.Gizmos
 {
     public class PathManagerGizmos : MonoBehaviour
     {
