@@ -10,6 +10,6 @@ namespace Programming.Configs
         public float range;
         public float damage;
 
-        public List<TowerAttackConfig> attackConfigs;
+        public List<TowerAbilityConfig> abilityConfigs;
     }
 }

@@ -15,7 +15,7 @@ namespace Programming.Controllers
     )]
     public class TowerController : Controller<TowerModel>
     {
-        private AttackStrategyFactory _attackStrategyFactory;
+        private AbilityStrategyFactory _abilityStrategyFactory;
         private WaypointContainer _waypointContainer;
 
         protected override void Awake()
@@ -23,25 +23,25 @@ namespace Programming.Controllers
             base.Awake();
             
             _waypointContainer = new WaypointContainer(GameObject.FindWithTag(Tags.Path.ToString()).transform);
-            _attackStrategyFactory = new AttackStrategyFactory(this);
+            _abilityStrategyFactory = new AbilityStrategyFactory(this);
             
             LookAtTarget(null);
         }
 
         private void Update()
         {
-            UpdateAttackStatsCooldownTime();
+            UpdateAbilityStatsCooldownTime();
             
             GameObject closestEnemy = GetClosestEnemy();
             LookAtTarget(closestEnemy);
             
             if (closestEnemy)
             {
-                foreach (AttackStat attackStat in model.AttackStats)
+                foreach (AbilityStat abilityStat in model.AbilityStats)
                 {
-                    if (attackStat.OnCooldown() == false)
+                    if (abilityStat.OnCooldown() == false)
                     {
-                        _attackStrategyFactory.GetStrategy(AttackType.Hitscan).Use(closestEnemy, attackStat);
+                        _abilityStrategyFactory.GetStrategy(AbilityType.Hitscan).Use(closestEnemy, abilityStat);
                     }
                 }
 
@@ -49,14 +49,14 @@ namespace Programming.Controllers
             }
         }
 
-        private void UpdateAttackStatsCooldownTime()
+        private void UpdateAbilityStatsCooldownTime()
         {
-            foreach (AttackStat attackStat in model.AttackStats)
+            foreach (AbilityStat abilityStat in model.AbilityStats)
             {
-                attackStat.UpdateCooldownTime();
-                if (attackStat.OnCooldown() == false)
+                abilityStat.UpdateCooldownTime();
+                if (abilityStat.OnCooldown() == false)
                 {
-                    Debug.Log($"Attack stat {attackStat.AttackType} is off cooldown.");
+                    Debug.Log($"Attack stat {abilityStat.AbilityType} is off cooldown.");
                 }
             }
         }

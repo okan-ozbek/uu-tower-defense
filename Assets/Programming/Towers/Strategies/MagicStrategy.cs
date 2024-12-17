@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Programming.Towers.Strategies
 {
-    public class MagicStrategy : BaseAttackStrategy
+    public class MagicStrategy : BaseAbilityStrategy
     {
         private readonly TowerController _controller;
 
@@ -13,7 +13,7 @@ namespace Programming.Towers.Strategies
             _controller = controller;
         }
 
-        public override void Use(GameObject target, AttackStat attackStat)
+        public override void Use(GameObject target, AbilityStat abilityStat)
         {
             // throw new System.NotImplementedException();
         }

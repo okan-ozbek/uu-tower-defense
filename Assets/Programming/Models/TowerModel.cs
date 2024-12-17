@@ -14,17 +14,17 @@ namespace Programming.Models
 
         public float Cost => statConfig.cost;
         
-        public readonly List<AttackStat> AttackStats = new();
+        public readonly List<AbilityStat> AbilityStats = new();
         
         public override void Initialize()
         {
             Range = new Stat<float>(statConfig.range);
             Damage = new Stat<float>(statConfig.damage);
 
-            foreach (TowerAttackConfig attackConfig in statConfig.attackConfigs)
+            foreach (TowerAbilityConfig attackConfig in statConfig.abilityConfigs)
             {
-                AttackStat attackStat = new AttackStat(attackConfig);
-                AttackStats.Add(attackStat);
+                AbilityStat abilityStat = new AbilityStat(attackConfig);
+                AbilityStats.Add(abilityStat);
             }
         }
     }

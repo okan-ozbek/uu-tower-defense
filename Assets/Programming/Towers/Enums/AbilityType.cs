@@ -1,6 +1,6 @@
 ﻿namespace Programming.Object.Enums
 {
-    public enum AttackType
+    public enum AbilityType
     {
         Hitscan,
         Projectile,

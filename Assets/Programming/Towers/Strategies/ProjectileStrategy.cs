@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Programming.Towers.Strategies
 {
-    public class ProjectileStrategy : BaseAttackStrategy
+    public class ProjectileStrategy : BaseAbilityStrategy
     {
         private readonly TowerController _towerController;
         
@@ -13,7 +13,7 @@ namespace Programming.Towers.Strategies
             _towerController = towerController;
         }
 
-        public override void Use(GameObject target, AttackStat attackStat)
+        public override void Use(GameObject target, AbilityStat abilityStat)
         {
             // throw new System.NotImplementedException();
         }

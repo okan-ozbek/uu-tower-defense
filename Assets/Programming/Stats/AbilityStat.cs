@@ -4,22 +4,22 @@ using UnityEngine;
 
 namespace Programming.Stats
 {
-    public class AttackStat
+    public class AbilityStat
     {
-        private readonly TowerAttackConfig _attackConfig;
+        private readonly TowerAbilityConfig _abilityConfig;
         private readonly Stat<float> _cooldown;
         private float _timePassed;
 
         public Stat<float> Value;
 
-        public AttackType AttackType => _attackConfig.attackType;
+        public AbilityType AbilityType => _abilityConfig.abilityType;
 
-        public AttackStat(TowerAttackConfig attackConfig)
+        public AbilityStat(TowerAbilityConfig abilityConfig)
         {
-            _attackConfig = attackConfig;
+            _abilityConfig = abilityConfig;
 
-            Value = new Stat<float>(attackConfig.value);
-            _cooldown = new Stat<float>(attackConfig.cooldown);
+            Value = new Stat<float>(abilityConfig.value);
+            _cooldown = new Stat<float>(abilityConfig.cooldown);
         }
 
         public bool OnCooldown()
