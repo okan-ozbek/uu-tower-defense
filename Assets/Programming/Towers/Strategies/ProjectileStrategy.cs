@@ -1,9 +1,10 @@
 ﻿using Programming.Controllers;
+using Programming.Stats;
 using UnityEngine;
 
 namespace Programming.Towers.Strategies
 {
-    public class ProjectileStrategy : IAttackStrategy
+    public class ProjectileStrategy : BaseAttackStrategy
     {
         private readonly TowerController _towerController;
         
@@ -12,9 +13,9 @@ namespace Programming.Towers.Strategies
             _towerController = towerController;
         }
 
-        public void Use(GameObject target)
+        public override void Use(GameObject target, AttackStat attackStat)
         {
-            // Pew pew
+            // throw new System.NotImplementedException();
         }
     }
 }

@@ -1,22 +1,40 @@
+using Programming.Configs;
+using Programming.Object.Enums;
 using UnityEngine;
 
-public class AttackStat
+namespace Programming.Stats
 {
-    private TowerAttackConfig _attackConfig;
-
-    public Stat<float> Value;
-    public Stat<float> Cooldown;
-
-    public AttackType AttackType => _attackConfig.attackType;
-
-    public AttackStat(TowerAttackConfig attackConfig)
+    public class AttackStat
     {
-        _attackConfig = attackConfig;
+        private readonly TowerAttackConfig _attackConfig;
+        private readonly Stat<float> _cooldown;
+        private float _timePassed;
 
-        Value = new Stat<float>(attackConfig.value);
-        Cooldown = new Stat<float>(attackConfig.cooldown);
+        public Stat<float> Value;
+
+        public AttackType AttackType => _attackConfig.attackType;
+
+        public AttackStat(TowerAttackConfig attackConfig)
+        {
+            _attackConfig = attackConfig;
+
+            Value = new Stat<float>(attackConfig.value);
+            _cooldown = new Stat<float>(attackConfig.cooldown);
+        }
+
+        public bool OnCooldown()
+        {
+            return (_timePassed < _cooldown.Value);
+        }
+        
+        public void UpdateCooldownTime()
+        {
+            _timePassed += Time.deltaTime;
+        }
+
+        public void ResetCooldownTime()
+        {
+            _timePassed = 0.0f;
+        }
     }
-
-    public bool CanAttack() => _attackConfig.CanAttack();
-    public void ResetReloadTime() => _attackConfig.ResetReloadTime();
 }

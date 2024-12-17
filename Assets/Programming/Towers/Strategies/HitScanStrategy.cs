@@ -1,9 +1,10 @@
 ﻿using Programming.Controllers;
+using Programming.Stats;
 using UnityEngine;
 
 namespace Programming.Towers.Strategies
 {
-    public class HitScanStrategy : IAttackStrategy
+    public class HitScanStrategy : BaseAttackStrategy
     {
         private readonly TowerController _controller;
         
@@ -12,14 +13,14 @@ namespace Programming.Towers.Strategies
             _controller = controller;
         }
         
-        public void Use(GameObject target)
+        public override void Use(GameObject target, AttackStat attackStat)
         {
-            if (target && _controller.model.HasReloaded())
+            if (Validated(target, attackStat)) 
             {
                 target.GetComponent<EnemyController>().model.Health.Value -= _controller.model.Damage.Value;
-                _controller.model.ResetReloadTime();
+                attackStat.ResetCooldownTime();
                 
-                Debug.DrawLine(_controller.transform.position, target.transform.position, Color.blue, 1f);
+                Debug.DrawLine(_controller.transform.position, target.transform.position, Color.blue, 3f);
             }
         }
     }

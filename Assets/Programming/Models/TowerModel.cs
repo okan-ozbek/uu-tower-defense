@@ -1,7 +1,6 @@
-﻿using Programming.Configs;
-using Programming.Object.Enums;
+﻿using System.Collections.Generic;
+using Programming.Configs;
 using Programming.Stats;
-using Programming.Towers.Enums;
 using UnityEngine;
 
 namespace Programming.Models
@@ -12,26 +11,21 @@ namespace Programming.Models
         
         public Stat<float> Range;
         public Stat<float> Damage;
-        public Stat<float> ReloadTime;
 
         public float Cost => statConfig.cost;
-        public List<AttackStat> AttackStats = new();
+        
+        public readonly List<AttackStat> AttackStats = new();
         
         public override void Initialize()
         {
             Range = new Stat<float>(statConfig.range);
             Damage = new Stat<float>(statConfig.damage);
-            ReloadTime = new Stat<float>(statConfig.reloadTime);
 
-            foreach (AttackStat attackConfig in statConfig.attackConfigs)
+            foreach (TowerAttackConfig attackConfig in statConfig.attackConfigs)
             {
                 AttackStat attackStat = new AttackStat(attackConfig);
-
                 AttackStats.Add(attackStat);
             }
         }
-        
-        public bool HasReloaded() => statConfig.HasReloaded();
-        public void ResetReloadTime() => statConfig.ResetReloadTime();
     }
 }

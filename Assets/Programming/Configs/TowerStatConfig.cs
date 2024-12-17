@@ -1,6 +1,4 @@
-﻿using Programming.Enums;
-using Programming.Object.Enums;
-using Programming.Towers.Enums;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace Programming.Configs

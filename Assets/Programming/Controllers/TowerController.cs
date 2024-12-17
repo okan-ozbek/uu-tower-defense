@@ -1,6 +1,9 @@
-﻿using Programming.Enums;
+﻿using System.Linq;
+using Programming.Enums;
 using Programming.Models;
+using Programming.Object.Enums;
 using Programming.Pathfinding;
+using Programming.Stats;
 using Programming.Towers.Factories;
 using Programming.Towers.Strategies;
 using UnityEngine;
@@ -27,6 +30,8 @@ namespace Programming.Controllers
 
         private void Update()
         {
+            UpdateAttackStatsCooldownTime();
+            
             GameObject closestEnemy = GetClosestEnemy();
             LookAtTarget(closestEnemy);
             
@@ -34,13 +39,25 @@ namespace Programming.Controllers
             {
                 foreach (AttackStat attackStat in model.AttackStats)
                 {
-                    if (attackStat.CanAttack())
+                    if (attackStat.OnCooldown() == false)
                     {
-                        _attackStrategyFactory.GetStrategy(attackStat.AttackType).Use(closestEnemy);
+                        _attackStrategyFactory.GetStrategy(AttackType.Hitscan).Use(closestEnemy, attackStat);
                     }
                 }
-                
+
                 Debug.DrawLine(transform.position, closestEnemy.transform.position, Color.red);
+            }
+        }
+
+        private void UpdateAttackStatsCooldownTime()
+        {
+            foreach (AttackStat attackStat in model.AttackStats)
+            {
+                attackStat.UpdateCooldownTime();
+                if (attackStat.OnCooldown() == false)
+                {
+                    Debug.Log($"Attack stat {attackStat.AttackType} is off cooldown.");
+                }
             }
         }
 

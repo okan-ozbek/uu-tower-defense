@@ -1,7 +1,10 @@
-enum StatType
+﻿namespace Programming.Stats
 {
-    None,
-    Health,
-    Damage,
-    Speed,
+    public enum StatType
+    {
+        None,
+        Health,
+        Damage,
+        Speed,
+    }
 }
