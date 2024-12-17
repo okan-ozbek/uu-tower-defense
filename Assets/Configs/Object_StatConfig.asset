@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d86e09fcafe3443c83b0cfd747f0089f, type: 3}
   m_Name: Object_StatConfig
   m_EditorClassIdentifier: 
+  cost: 5
   range: 2
   damage: 5
-  reloadTime: 3
+  reloadTime: 1
   attackType: 0
+  towerType: 0
