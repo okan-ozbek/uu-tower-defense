@@ -1,55 +1,35 @@
-﻿using Settings.Programming.Enums;
-using Settings.Programming.Factories;
-using System;
+﻿using System;
+using UnityEngine;
 
-namespace Settings.Programming.Stats
+namespace Programming.Stats
 {
-    public class Stat<T> where T : struct, IComparable, IConvertible, IFormattable
+    public class Stat<TValue>
     {
-        private readonly OperatorStrategyFactory _operatorStrategy;
-        private readonly StatMediator _mediator;
-        private readonly StatType _statType;
-        private readonly bool _matchBaseValue;
+        public event Action OnValueChanged;
+        
+        private readonly TValue _maxValue;
+        private TValue _value;
 
-        private T _baseValue;
-        private T _currentValue;
-
-        private T BaseValue
+        public TValue MaxValue => _maxValue;
+        public TValue Value
         {
-            get
-            {
-                StatQuery query = new StatQuery(Convert.ToSingle(_baseValue), _statType);
-                return (T)Convert.ChangeType(_mediator.Modify(query), typeof(T));
-            }
-            set => _baseValue = value;
+            get => _value;
+            set => SetValue(value);
+        }
+        
+        public Stat(TValue value)
+        {
+            _maxValue = value;
+            _value = value;
+            
+            OnValueChanged = null;
         }
 
-        public T GetCurrentValue()
+        private void SetValue(TValue value)
         {
-            _currentValue = (_matchBaseValue) ? BaseValue : GetCurrentValueNotExceededBaseValue();
-            return _currentValue;
-        }
-
-        public void SetCurrentValue(T amount, OperatorType operatorType)
-        {
-            _currentValue = (T)Convert.ChangeType(_operatorStrategy.GetOperator(operatorType).Calculate(Convert.ToSingle(_currentValue), Convert.ToSingle(amount)), typeof(T));
-            _currentValue = GetCurrentValueNotExceededBaseValue();
-        }
-
-        public Stat(StatMediator mediator, StatType statType, T baseValue, bool matchBaseValue = false)
-        {
-            _operatorStrategy = new OperatorStrategyFactory();
-            _mediator = mediator;
-            _statType = statType;
-
-            _baseValue = baseValue;
-            _currentValue = baseValue;
-            _matchBaseValue = matchBaseValue;
-        }
-
-        private T GetCurrentValueNotExceededBaseValue()
-        {
-            return (Convert.ToSingle(_currentValue) > Convert.ToSingle(BaseValue)) ? BaseValue : _currentValue;
+            _value = (TValue)Convert.ChangeType(value, typeof(TValue));
+            
+            OnValueChanged?.Invoke();
         }
     }
 }
