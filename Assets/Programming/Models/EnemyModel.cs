@@ -21,5 +21,13 @@ namespace Programming.Models
             Speed = new Stat<float>(statConfig.speed);
             Money = new Stat<float>(statConfig.money);
         }
+
+        public Stat<float> GetStat(StatType statType) => statType switch
+        {
+            StatType.Health => Health,
+            StatType.Damage => Damage,
+            StatType.Speed => Speed,
+            _ => throw new ArgumentException($"Invalid stat type: {statType}", nameof(statType))
+        };
     }
 }

@@ -12,7 +12,7 @@ namespace Programming.Controllers
     )]
     public class TowerController : Controller<TowerModel>
     {
-        private IAttackStrategy _attackStrategy;
+        private AttackStrategyFactory _attackStrategyFactory;
         private WaypointContainer _waypointContainer;
 
         protected override void Awake()
@@ -20,7 +20,7 @@ namespace Programming.Controllers
             base.Awake();
             
             _waypointContainer = new WaypointContainer(GameObject.FindWithTag(Tags.Path.ToString()).transform);
-            _attackStrategy = new AttackStrategyFactory(this).GetStrategy(model.AttackType);
+            _attackStrategyFactory = new AttackStrategyFactory(this);
             
             LookAtTarget(null);
         }
@@ -32,7 +32,13 @@ namespace Programming.Controllers
             
             if (closestEnemy)
             {
-                _attackStrategy.Use(closestEnemy);
+                foreach (AttackStat attackStat in model.AttackStats)
+                {
+                    if (attackStat.CanAttack())
+                    {
+                        _attackStrategyFactory.GetStrategy(attackStat.AttackType).Use(closestEnemy);
+                    }
+                }
                 
                 Debug.DrawLine(transform.position, closestEnemy.transform.position, Color.red);
             }

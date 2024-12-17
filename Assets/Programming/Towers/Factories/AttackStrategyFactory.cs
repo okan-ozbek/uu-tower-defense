@@ -13,6 +13,7 @@ namespace Programming.Towers.Factories
         {
             _strategies[AttackType.Hitscan] = new HitScanStrategy(towerController);
             _strategies[AttackType.Projectile] = new ProjectileStrategy(towerController);
+            _strategies[AttackType.Magic] = new MagicStrategy(towerController);
         }
         
         public IAttackStrategy GetStrategy(AttackType type)

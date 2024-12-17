@@ -15,14 +15,20 @@ namespace Programming.Models
         public Stat<float> ReloadTime;
 
         public float Cost => statConfig.cost;
-        public AttackType AttackType => statConfig.attackType;
-        public TowerType TowerType => statConfig.towerType;
+        public List<AttackStat> AttackStats = new();
         
         public override void Initialize()
         {
             Range = new Stat<float>(statConfig.range);
             Damage = new Stat<float>(statConfig.damage);
             ReloadTime = new Stat<float>(statConfig.reloadTime);
+
+            foreach (AttackStat attackConfig in statConfig.attackConfigs)
+            {
+                AttackStat attackStat = new AttackStat(attackConfig);
+
+                AttackStats.Add(attackStat);
+            }
         }
         
         public bool HasReloaded() => statConfig.HasReloaded();

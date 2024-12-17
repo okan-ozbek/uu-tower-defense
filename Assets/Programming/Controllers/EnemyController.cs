@@ -41,5 +41,19 @@ namespace Programming.Controllers
                 Destroy(gameObject);
             }
         }
+
+        public void SetStatusEffect(StatType statType, float value, float duration)
+        {
+            float baseValue = model.GetStat(statType).Value;
+            model.GetStat(statType).Value += value;
+
+            StartCoroutine(RemoveStatusEffect(statType, baseValue, duration));
+        }
+
+        private IEnumerator RemoveStatusEffect(StatType statType, float baseValue, float duration)
+        {
+            yield return new WaitForSeconds(duration);
+            model.GetStat(statType).Value = baseValue;
+        }
     }
 }
