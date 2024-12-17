@@ -9,8 +9,8 @@ namespace Programming.Models
     {
         [SerializeField] private TowerStatConfig statConfig;
         
-        public Stat<float> Range;
-        public Stat<float> Damage;
+        public GenericStat<float> Range;
+        public GenericStat<float> Damage;
 
         public float Cost => statConfig.cost;
         
@@ -18,8 +18,8 @@ namespace Programming.Models
         
         public override void Initialize()
         {
-            Range = new Stat<float>(statConfig.range);
-            Damage = new Stat<float>(statConfig.damage);
+            Range = new GenericStat<float>(statConfig.range);
+            Damage = new GenericStat<float>(statConfig.damage);
 
             foreach (TowerAbilityConfig attackConfig in statConfig.abilityConfigs)
             {

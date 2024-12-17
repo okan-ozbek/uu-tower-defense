@@ -7,10 +7,10 @@ namespace Programming.Stats
     public class AbilityStat
     {
         private readonly TowerAbilityConfig _abilityConfig;
-        private readonly Stat<float> _cooldown;
         private float _timePassed;
 
-        public Stat<float> Value;
+        public GenericStat<float> Value;
+        private readonly GenericStat<float> _cooldown;
 
         public AbilityType AbilityType => _abilityConfig.abilityType;
 
@@ -18,8 +18,8 @@ namespace Programming.Stats
         {
             _abilityConfig = abilityConfig;
 
-            Value = new Stat<float>(abilityConfig.value);
-            _cooldown = new Stat<float>(abilityConfig.cooldown);
+            Value = new GenericStat<float>(abilityConfig.value);
+            _cooldown = new GenericStat<float>(abilityConfig.cooldown);
         }
 
         public bool OnCooldown()

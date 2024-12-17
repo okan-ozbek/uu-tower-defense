@@ -9,20 +9,20 @@ namespace Programming.Models
     {
         [SerializeField] private EnemyStatConfig statConfig;
         
-        public Stat<float> Health;
-        public Stat<float> Damage;
-        public Stat<float> Speed;
-        public Stat<float> Money;
+        public GenericStat<float> Health;
+        public GenericStat<float> Damage;
+        public GenericStat<float> Speed;
+        public GenericStat<float> Money;
         
         public override void Initialize()
         {
-            Health = new Stat<float>(statConfig.health);
-            Damage = new Stat<float>(statConfig.damage);
-            Speed = new Stat<float>(statConfig.speed);
-            Money = new Stat<float>(statConfig.money);
+            Health = new GenericStat<float>(statConfig.health);
+            Damage = new GenericStat<float>(statConfig.damage);
+            Speed = new GenericStat<float>(statConfig.speed);
+            Money = new GenericStat<float>(statConfig.money);
         }
 
-        public Stat<float> GetStat(StatType statType) => statType switch
+        public GenericStat<float> GetStat(StatType statType) => statType switch
         {
             StatType.Health => Health,
             StatType.Damage => Damage,

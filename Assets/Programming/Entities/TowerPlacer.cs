@@ -1,4 +1,5 @@
-﻿using Programming.Controllers;
+﻿using System;
+using Programming.Controllers;
 using Programming.Enums;
 using Programming.Models;
 using Programming.Object;
@@ -9,28 +10,39 @@ namespace Programming.Towers
 {
     public class TowerPlacer : MonoBehaviour
     {
-        public GameObject temp;
-        
         [SerializeField] private float minDistance;
 
         private GameController _gameController;
         private WaypointContainer _waypointContainer;
         private TowerLocationContainer _towerLocationContainer;
         private Camera _camera;
+        private GameObject _selectedTower;
         
         private void Awake()
         {
             _camera = Camera.main;
             _gameController = GameObject.FindWithTag(Tags.GameController.ToString()).GetComponent<GameController>();
+            
             _towerLocationContainer = new TowerLocationContainer();
             _waypointContainer = new WaypointContainer(GameObject.FindWithTag(Tags.Path.ToString()).transform);
+
+            ShopController.OnSelectedTower += SetSelectedTower;
+        }
+
+        private void OnDisable()
+        {
+            ShopController.OnSelectedTower -= SetSelectedTower;
         }
 
         private void Update()
         {
             Vector2 mousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
+
+            if (_selectedTower)
+            {
+                PlaceObject(mousePosition);    
+            }
             
-            PlaceObject(mousePosition);
             DrawDebugLines(mousePosition); // Debug only
         }
         
@@ -38,7 +50,7 @@ namespace Programming.Towers
         {
             if (InBudget() && OutOfRange(mousePosition) && Input.GetMouseButtonDown(0))
             {
-                GameObject placedObject = Instantiate(temp, mousePosition, Quaternion.identity);
+                GameObject placedObject = Instantiate(_selectedTower, mousePosition, Quaternion.identity);
                 _towerLocationContainer.Add(placedObject.transform);
                 _gameController.PurchaseTower(placedObject.GetComponent<TowerController>().model.Cost);
             }
@@ -46,7 +58,7 @@ namespace Programming.Towers
 
         private bool InBudget()
         {
-            return _gameController.GetComponent<GameModel>().Money.Value >= temp.GetComponent<TowerModel>().Cost;
+            return _gameController.GetComponent<GameModel>().Money.Value >= _selectedTower.GetComponent<TowerModel>().Cost;
         }
 
         private bool OutOfRange(Vector2 mousePosition)
@@ -55,6 +67,11 @@ namespace Programming.Towers
             bool placedObjectsOutOfRange = (_towerLocationContainer.PlacedTowers <= 0) || (Vector2.Distance(mousePosition, _towerLocationContainer.GetClosestPlacedTower(mousePosition).position) > minDistance);
             
             return waypointsOutOfRange && placedObjectsOutOfRange;
+        }
+
+        private void SetSelectedTower(GameObject tower)
+        {
+            _selectedTower = tower;
         }
 
         private void DrawDebugLines(Vector2 mousePosition)

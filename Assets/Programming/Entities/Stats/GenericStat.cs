@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Programming.Stats
 {
-    public class Stat<TValue>
+    public class GenericStat<TValue>
     {
         public event Action OnValueChanged;
         
@@ -17,7 +17,7 @@ namespace Programming.Stats
             set => SetValue(value);
         }
         
-        public Stat(TValue value)
+        public GenericStat(TValue value)
         {
             _maxValue = value;
             _value = value;
