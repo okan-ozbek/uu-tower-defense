@@ -1,12 +1,10 @@
-﻿using System;
-using Programming.Controllers;
+﻿using Programming.Controllers;
+using Programming.Entities.Pathfinding;
 using Programming.Enums;
 using Programming.Models;
-using Programming.Object;
-using Programming.Pathfinding;
 using UnityEngine;
 
-namespace Programming.Towers
+namespace Programming.Entities
 {
     public class TowerPlacer : MonoBehaviour
     {

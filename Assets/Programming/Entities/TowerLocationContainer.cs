@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
-namespace Programming.Object
+namespace Programming.Entities
 {
     public class TowerLocationContainer
     {

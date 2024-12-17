@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Programming.Enemies;
+using Programming.Entities;
 using Programming.Models;
 using UnityEngine;
 

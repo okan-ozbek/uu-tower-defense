@@ -1,8 +1,8 @@
 using Programming.Configs;
-using Programming.Object.Enums;
+using Programming.Entities.Enums;
 using UnityEngine;
 
-namespace Programming.Stats
+namespace Programming.Entities.Stats
 {
     public class AbilityStat
     {

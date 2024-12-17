@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Programming.Pathfinding
+namespace Programming.Entities.Pathfinding
 {
     public class WaypointProcessor
     {

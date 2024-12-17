@@ -1,5 +1,4 @@
-using Programming.Object.Enums;
-using Programming.Stats;
+using Programming.Entities.Enums;
 using UnityEngine;
 using UnityEngine.Serialization;
 

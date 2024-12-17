@@ -1,8 +1,8 @@
 ﻿using System.Collections;
+using Programming.Entities.Enums;
+using Programming.Entities.Pathfinding;
 using Programming.Enums;
 using Programming.Models;
-using Programming.Pathfinding;
-using Programming.Stats;
 using UnityEngine;
 
 namespace Programming.Controllers

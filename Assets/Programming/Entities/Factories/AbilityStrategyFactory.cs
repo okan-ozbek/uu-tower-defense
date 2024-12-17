@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using Programming.Controllers;
-using Programming.Object.Enums;
-using Programming.Towers.Strategies;
+using Programming.Entities.Enums;
+using Programming.Entities.Strategies;
 
-namespace Programming.Towers.Factories
+namespace Programming.Entities.Factories
 {
     public sealed class AbilityStrategyFactory
     {

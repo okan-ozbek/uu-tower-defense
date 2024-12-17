@@ -1,7 +1,7 @@
-﻿using Programming.Stats;
+﻿using Programming.Entities.Stats;
 using UnityEngine;
 
-namespace Programming.Towers.Strategies
+namespace Programming.Entities.Strategies
 {
     public interface IAbilityStrategy
     {

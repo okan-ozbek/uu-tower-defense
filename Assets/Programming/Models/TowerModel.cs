@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Programming.Configs;
-using Programming.Stats;
+using Programming.Entities.Stats;
 using UnityEngine;
 
 namespace Programming.Models

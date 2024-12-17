@@ -1,4 +1,4 @@
-﻿namespace Programming.Stats
+﻿namespace Programming.Entities.Enums
 {
     public enum StatType
     {

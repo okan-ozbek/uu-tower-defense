@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using Programming.Controllers;
 using UnityEngine;
 
-namespace Programming.Pathfinding
+namespace Programming.Entities.Pathfinding
 {
     public class WaypointContainer
     {

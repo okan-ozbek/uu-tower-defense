@@ -1,4 +1,4 @@
-﻿namespace Programming.Object.Enums
+﻿namespace Programming.Entities.Enums
 {
     public enum AbilityType
     {

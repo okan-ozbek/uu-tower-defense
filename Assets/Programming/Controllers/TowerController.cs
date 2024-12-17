@@ -1,11 +1,10 @@
 ﻿using System.Linq;
+using Programming.Entities.Enums;
+using Programming.Entities.Factories;
+using Programming.Entities.Pathfinding;
+using Programming.Entities.Stats;
 using Programming.Enums;
 using Programming.Models;
-using Programming.Object.Enums;
-using Programming.Pathfinding;
-using Programming.Stats;
-using Programming.Towers.Factories;
-using Programming.Towers.Strategies;
 using UnityEngine;
 
 namespace Programming.Controllers
