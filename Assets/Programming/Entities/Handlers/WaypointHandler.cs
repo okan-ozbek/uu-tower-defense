@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Programming.Controllers;
+using Programming.Entities.Pathfinding;
 using UnityEngine;
 
-namespace Programming.Entities.Pathfinding
+namespace Programming.Entities.Handlers
 {
-    public class WaypointContainer
+    public class WaypointHandler
     {
         private readonly Transform _path;
         private readonly List<WaypointProcessor> _waypoints = new();
@@ -13,13 +14,13 @@ namespace Programming.Entities.Pathfinding
 
         private readonly EnemyController _controller;
 
-        public WaypointContainer(Transform path)
+        public WaypointHandler(Transform path)
         {
             _path = path;
             PopulateWaypoints();
         }
         
-        public WaypointContainer(EnemyController controller, Transform path)
+        public WaypointHandler(EnemyController controller, Transform path)
         {
             _path = path;
             _controller = controller;

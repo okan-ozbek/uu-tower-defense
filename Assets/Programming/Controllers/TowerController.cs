@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using Programming.Entities.Enums;
 using Programming.Entities.Factories;
+using Programming.Entities.Handlers;
 using Programming.Entities.Pathfinding;
 using Programming.Entities.Stats;
 using Programming.Enums;
@@ -15,13 +16,13 @@ namespace Programming.Controllers
     public class TowerController : Controller<TowerModel>
     {
         private AbilityStrategyFactory _abilityStrategyFactory;
-        private WaypointContainer _waypointContainer;
+        private WaypointHandler _waypointHandler;
 
         protected override void Awake()
         {
             base.Awake();
             
-            _waypointContainer = new WaypointContainer(GameObject.FindWithTag(Tags.Path.ToString()).transform);
+            _waypointHandler = new WaypointHandler(GameObject.FindWithTag(Tags.Path.ToString()).transform);
             _abilityStrategyFactory = new AbilityStrategyFactory(this);
             
             LookAtTarget(null);
@@ -85,7 +86,7 @@ namespace Programming.Controllers
 
         private Transform GetClosestWaypoint()
         {
-            return _waypointContainer.GetClosestWaypoint(new Vector2(transform.position.x, transform.position.y));
+            return _waypointHandler.GetClosestWaypoint(new Vector2(transform.position.x, transform.position.y));
         }
 
         private void LookAtTarget(GameObject target)

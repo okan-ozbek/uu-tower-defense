@@ -2,9 +2,9 @@
 using System.Linq;
 using UnityEngine;
 
-namespace Programming.Entities
+namespace Programming.Entities.Handlers
 {
-    public class TowerLocationContainer
+    public class TowerLocationHandler
     {
         public int PlacedTowers => _placedTowers.Count;
         

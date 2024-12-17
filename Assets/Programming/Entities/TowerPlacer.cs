@@ -1,4 +1,5 @@
 ﻿using Programming.Controllers;
+using Programming.Entities.Handlers;
 using Programming.Entities.Pathfinding;
 using Programming.Enums;
 using Programming.Models;
@@ -11,8 +12,8 @@ namespace Programming.Entities
         [SerializeField] private float minDistance;
 
         private GameController _gameController;
-        private WaypointContainer _waypointContainer;
-        private TowerLocationContainer _towerLocationContainer;
+        private WaypointHandler _waypointHandler;
+        private TowerLocationHandler _towerLocationHandler;
         private Camera _camera;
         private GameObject _selectedTower;
         
@@ -21,8 +22,8 @@ namespace Programming.Entities
             _camera = Camera.main;
             _gameController = GameObject.FindWithTag(Tags.GameController.ToString()).GetComponent<GameController>();
             
-            _towerLocationContainer = new TowerLocationContainer();
-            _waypointContainer = new WaypointContainer(GameObject.FindWithTag(Tags.Path.ToString()).transform);
+            _towerLocationHandler = new TowerLocationHandler();
+            _waypointHandler = new WaypointHandler(GameObject.FindWithTag(Tags.Path.ToString()).transform);
 
             ShopController.OnSelectedTower += SetSelectedTower;
         }
@@ -49,7 +50,7 @@ namespace Programming.Entities
             if (InBudget() && OutOfRange(mousePosition) && Input.GetMouseButtonDown(0))
             {
                 GameObject placedObject = Instantiate(_selectedTower, mousePosition, Quaternion.identity);
-                _towerLocationContainer.Add(placedObject.transform);
+                _towerLocationHandler.Add(placedObject.transform);
                 _gameController.PurchaseTower(placedObject.GetComponent<TowerController>().model.Cost);
             }
         }
@@ -61,8 +62,8 @@ namespace Programming.Entities
 
         private bool OutOfRange(Vector2 mousePosition)
         {
-            bool waypointsOutOfRange = (Vector2.Distance(mousePosition, _waypointContainer.GetClosestWaypoint(mousePosition).position) > minDistance);
-            bool placedObjectsOutOfRange = (_towerLocationContainer.PlacedTowers <= 0) || (Vector2.Distance(mousePosition, _towerLocationContainer.GetClosestPlacedTower(mousePosition).position) > minDistance);
+            bool waypointsOutOfRange = (Vector2.Distance(mousePosition, _waypointHandler.GetClosestWaypoint(mousePosition).position) > minDistance);
+            bool placedObjectsOutOfRange = (_towerLocationHandler.PlacedTowers <= 0) || (Vector2.Distance(mousePosition, _towerLocationHandler.GetClosestPlacedTower(mousePosition).position) > minDistance);
             
             return waypointsOutOfRange && placedObjectsOutOfRange;
         }
@@ -75,11 +76,11 @@ namespace Programming.Entities
         private void DrawDebugLines(Vector2 mousePosition)
         {
             Color waypointColor = OutOfRange(mousePosition) ? Color.green : Color.red;
-            Debug.DrawLine(mousePosition, _waypointContainer.GetClosestWaypoint(mousePosition).position, waypointColor);
-            if (_towerLocationContainer.PlacedTowers > 0)
+            Debug.DrawLine(mousePosition, _waypointHandler.GetClosestWaypoint(mousePosition).position, waypointColor);
+            if (_towerLocationHandler.PlacedTowers > 0)
             {
                 Color objectColor = OutOfRange(mousePosition) ? Color.green : Color.red;
-                Debug.DrawLine(mousePosition, _towerLocationContainer.GetClosestPlacedTower(mousePosition).position, objectColor);
+                Debug.DrawLine(mousePosition, _towerLocationHandler.GetClosestPlacedTower(mousePosition).position, objectColor);
             }
         }
     }
