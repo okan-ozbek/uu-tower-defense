@@ -4,6 +4,7 @@ using Programming.Entities.Pathfinding;
 using Programming.Enums;
 using Programming.Models;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Programming.Entities
 {
@@ -37,21 +38,28 @@ namespace Programming.Entities
         {
             Vector2 mousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
 
-            if (_selectedTower)
+            // Event system is used to prevent placing towers when clicking on UI elements
+            if (_selectedTower && EventSystem.current.IsPointerOverGameObject() == false)
             {
-                PlaceObject(mousePosition);    
+                TowerPlacement(mousePosition);    
             }
             
             DrawDebugLines(mousePosition); // Debug only
         }
         
-        private void PlaceObject(Vector2 mousePosition)
+        private void TowerPlacement(Vector2 mousePosition)
         {
             if (InBudget() && OutOfRange(mousePosition) && Input.GetMouseButtonDown(0))
             {
-                GameObject placedObject = Instantiate(_selectedTower, mousePosition, Quaternion.identity);
-                _towerLocationHandler.Add(placedObject.transform);
-                _gameController.PurchaseTower(placedObject.GetComponent<TowerController>().model.Cost);
+                GameObject tower = Instantiate(_selectedTower, mousePosition, Quaternion.identity);
+                
+                _towerLocationHandler.Add(tower.transform);
+                _gameController.PurchaseTower(tower.GetComponent<TowerController>().model.Cost);
+            }
+
+            if (Input.GetMouseButtonDown(1))
+            {
+                _selectedTower = null;
             }
         }
 

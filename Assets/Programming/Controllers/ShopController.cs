@@ -17,13 +17,23 @@ namespace Programming.Controllers
         {
             base.Awake();
             
-            foreach (GameObject tower in model.towers)
+            SetupButtons();
+        }
+
+        private void SetupButtons()
+        {
+            const float offset = 50.0f;
+            
+            for (int index = 0; index < model.towers.Count; index++)
             {
-                GameObject button = Instantiate(model.button, transform);
+                GameObject button = Instantiate(model.button, new Vector2(transform.position.x, transform.position.y - (index * offset)), Quaternion.identity, transform);
+
                 button.transform.parent = transform;
-                
-                button.GetComponentInChildren<TextMeshProUGUI>().text = tower.name;
-                button.GetComponent<Button>().onClick.AddListener(() => SelectTower(tower));
+                button.GetComponentInChildren<TextMeshProUGUI>().text = model.towers[index].name;
+
+                int indexCopy = index;
+                button.GetComponent<Button>().onClick.AddListener(() => SelectTower(model.towers[indexCopy]));
+
             }
         }
 
