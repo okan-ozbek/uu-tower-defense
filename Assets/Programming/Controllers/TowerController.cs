@@ -1,8 +1,6 @@
-﻿using System.Linq;
-using Programming.Entities.Enums;
+﻿using Programming.Entities.Enums;
 using Programming.Entities.Factories;
 using Programming.Entities.Handlers;
-using Programming.Entities.Pathfinding;
 using Programming.Entities.Stats;
 using Programming.Enums;
 using Programming.Models;
@@ -54,10 +52,6 @@ namespace Programming.Controllers
             foreach (AbilityStat abilityStat in model.AbilityStats)
             {
                 abilityStat.UpdateCooldownTime();
-                if (abilityStat.OnCooldown() == false)
-                {
-                    Debug.Log($"Attack stat {abilityStat.AbilityType} is off cooldown.");
-                }
             }
         }
 
@@ -66,7 +60,8 @@ namespace Programming.Controllers
             GameObject closestEnemy = null;
             float closestDistance = float.MaxValue;
             
-            Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, model.Range.Value);
+            // ReSharper disable once Unity.PreferNonAllocApi
+            var enemies = Physics2D.OverlapCircleAll(transform.position, model.Range);
             foreach (Collider2D enemy in enemies)
             {
                 if (enemy.CompareTag(Tags.Enemy.ToString()))
@@ -107,7 +102,7 @@ namespace Programming.Controllers
         private void OnDrawGizmos()
         {
             UnityEngine.Gizmos.color = Color.blue;
-            UnityEngine.Gizmos.DrawWireSphere(transform.position, model.Range.Value);
+            UnityEngine.Gizmos.DrawWireSphere(transform.position, model.Range);
         }
     }
 }

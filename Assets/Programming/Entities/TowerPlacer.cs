@@ -10,6 +10,7 @@ namespace Programming.Entities
 {
     public class TowerPlacer : MonoBehaviour
     {
+        [SerializeField] private GameObject towerPlaceholder;
         [SerializeField] private float minDistance;
 
         private GameController _gameController;
@@ -38,10 +39,14 @@ namespace Programming.Entities
         {
             Vector2 mousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
 
-            // Event system is used to prevent placing towers when clicking on UI elements
-            if (_selectedTower && EventSystem.current.IsPointerOverGameObject() == false)
+            if (_selectedTower)
             {
-                TowerPlacement(mousePosition);    
+                towerPlaceholder.transform.position = mousePosition;
+                
+                if (EventSystem.current.IsPointerOverGameObject() == false)
+                {
+                    TowerPlacement(mousePosition);
+                }
             }
             
             DrawDebugLines(mousePosition); // Debug only
@@ -49,18 +54,34 @@ namespace Programming.Entities
         
         private void TowerPlacement(Vector2 mousePosition)
         {
-            if (InBudget() && OutOfRange(mousePosition) && Input.GetMouseButtonDown(0))
+            if (CanPlaceTower(mousePosition))
             {
-                GameObject tower = Instantiate(_selectedTower, mousePosition, Quaternion.identity);
+                towerPlaceholder.GetComponent<SpriteRenderer>().color = Color.green;
+                towerPlaceholder.transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(0.0f, 1.0f, 0.0f, 0.2f);
+
+                if (Input.GetMouseButtonDown(0))
+                {
+                    GameObject tower = Instantiate(_selectedTower, mousePosition, Quaternion.identity);
                 
-                _towerLocationHandler.Add(tower.transform);
-                _gameController.PurchaseTower(tower.GetComponent<TowerController>().model.Cost);
+                    _towerLocationHandler.Add(tower.transform);
+                    _gameController.PurchaseTower(tower.GetComponent<TowerController>().model.Cost);
+                }
+            }
+            else
+            {
+                towerPlaceholder.GetComponent<SpriteRenderer>().color = Color.red;
+                towerPlaceholder.transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(1.0f, 0.0f, 0.0f, 0.2f);
             }
 
             if (Input.GetMouseButtonDown(1))
             {
-                _selectedTower = null;
+                SetSelectedTower(null);
             }
+        }
+
+        private bool CanPlaceTower(Vector2 mousePosition)
+        {
+            return InBudget() && OutOfRange(mousePosition);
         }
 
         private bool InBudget()
@@ -78,6 +99,19 @@ namespace Programming.Entities
 
         private void SetSelectedTower(GameObject tower)
         {
+            towerPlaceholder.SetActive(tower);
+            if (tower)
+            {
+                towerPlaceholder.transform.GetChild(0).transform.localScale = new Vector2(
+                    tower.GetComponent<TowerModel>().Range * 2.0f,
+                    tower.GetComponent<TowerModel>().Range * 2.0f
+                );
+            }
+            else
+            {
+                towerPlaceholder.transform.GetChild(0).transform.localScale = Vector2.one;
+            }
+            
             _selectedTower = tower;
         }
 

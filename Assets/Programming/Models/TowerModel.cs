@@ -9,16 +9,15 @@ namespace Programming.Models
     {
         [SerializeField] private TowerStatConfig statConfig;
         
-        public GenericStat<float> Range;
         public GenericStat<float> Damage;
 
         public float Cost => statConfig.cost;
+        public float Range => statConfig.range;
         
         public readonly List<AbilityStat> AbilityStats = new();
         
         public override void Initialize()
         {
-            Range = new GenericStat<float>(statConfig.range);
             Damage = new GenericStat<float>(statConfig.damage);
 
             foreach (TowerAbilityConfig attackConfig in statConfig.abilityConfigs)
