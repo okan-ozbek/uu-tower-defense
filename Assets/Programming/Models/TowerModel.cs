@@ -1,7 +1,6 @@
-﻿using Programming.Configs;
-using Programming.Object.Enums;
-using Programming.Stats;
-using Programming.Towers.Enums;
+﻿using System.Collections.Generic;
+using Programming.Configs;
+using Programming.Entities.Stats;
 using UnityEngine;
 
 namespace Programming.Models
@@ -10,22 +9,22 @@ namespace Programming.Models
     {
         [SerializeField] private TowerStatConfig statConfig;
         
-        public Stat<float> Range;
-        public Stat<float> Damage;
-        public Stat<float> ReloadTime;
+        public GenericStat<float> Damage;
 
         public float Cost => statConfig.cost;
-        public AttackType AttackType => statConfig.attackType;
-        public TowerType TowerType => statConfig.towerType;
+        public float Range => statConfig.range;
+        
+        public readonly List<AbilityStat> AbilityStats = new();
         
         public override void Initialize()
         {
-            Range = new Stat<float>(statConfig.range);
-            Damage = new Stat<float>(statConfig.damage);
-            ReloadTime = new Stat<float>(statConfig.reloadTime);
+            Damage = new GenericStat<float>(statConfig.damage);
+
+            foreach (TowerAbilityConfig attackConfig in statConfig.abilityConfigs)
+            {
+                AbilityStat abilityStat = new AbilityStat(attackConfig);
+                AbilityStats.Add(abilityStat);
+            }
         }
-        
-        public bool HasReloaded() => statConfig.HasReloaded();
-        public void ResetReloadTime() => statConfig.ResetReloadTime();
     }
 }
