@@ -1,5 +1,5 @@
 ﻿using Programming.Configs;
-using Programming.Stats;
+using Programming.Entities.Stats;
 using UnityEngine;
 
 namespace Programming.Models
@@ -8,13 +8,13 @@ namespace Programming.Models
     {
         [SerializeField] private PlayerStatConfig statConfig;
         
-        public Stat<float> Health;
-        public Stat<float> Money;
+        public GenericStat<float> Health;
+        public GenericStat<float> Money;
         
         public override void Initialize()
         {
-            Health = new Stat<float>(statConfig.health);
-            Money = new Stat<float>(statConfig.money);
+            Health = new GenericStat<float>(statConfig.health);
+            Money = new GenericStat<float>(statConfig.money);
         }
     }
 }

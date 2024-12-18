@@ -1,26 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using Programming.Enemies;
+using Programming.Entities;
 using Programming.Models;
+using Programming.Views;
 using UnityEngine;
 
 namespace Programming.Controllers
 {
     [RequireComponent(
         requiredComponent:  typeof(WaveSystem), 
-        requiredComponent2: typeof(GameModel)
+        requiredComponent2: typeof(GameModel),
+        requiredComponent3: typeof(GameView)
     )]
     public class GameController : Controller<GameModel>
     {
-        private WaveSystem _waveSystem;
-
-        protected override void Awake()
-        {
-            base.Awake();
-            
-            _waveSystem = GetComponent<WaveSystem>();
-        }
-        
         public void HandleFinishedEvent(float value)
         {
             model.Health.Value -= value;
