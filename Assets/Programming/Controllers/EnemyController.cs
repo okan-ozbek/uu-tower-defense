@@ -2,8 +2,8 @@
 using Programming.Entities.Enums;
 using Programming.Entities.Handlers;
 using Programming.Entities.Pathfinding;
-using Programming.Enums;
 using Programming.Models;
+using Programming.Utility.Enums;
 using UnityEngine;
 
 namespace Programming.Controllers

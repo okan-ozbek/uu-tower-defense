@@ -41,7 +41,7 @@ namespace Programming.Views
         
         private void UpdateHealthText()
         {
-            healthText.text = $"<3 {model.Health.Value}";
+            healthText.text = $"{model.Health.Value}";
         }
         
         private void UpdateMoneyText()

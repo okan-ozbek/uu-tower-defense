@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Programming.Enums;
 using Programming.Models;
+using Programming.Utility.Enums;
 using TMPro;
 using UnityEditor.Analytics;
 using UnityEngine;

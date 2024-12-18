@@ -1,4 +1,4 @@
-﻿namespace Programming.Enums
+﻿namespace Programming.Utility.Enums
 {
     public enum Tags
     {
@@ -12,5 +12,6 @@
         Interactable = 7,
         Enemy = 8,
         Path = 9,
+        TowerPlaceholder = 10,
     }
 }

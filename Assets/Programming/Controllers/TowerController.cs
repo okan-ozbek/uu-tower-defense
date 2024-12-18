@@ -2,8 +2,8 @@
 using Programming.Entities.Factories;
 using Programming.Entities.Handlers;
 using Programming.Entities.Stats;
-using Programming.Enums;
 using Programming.Models;
+using Programming.Utility.Enums;
 using UnityEngine;
 
 namespace Programming.Controllers

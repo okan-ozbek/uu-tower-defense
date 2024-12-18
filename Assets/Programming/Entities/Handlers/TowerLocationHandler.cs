@@ -17,7 +17,7 @@ namespace Programming.Entities.Handlers
         
         public Transform GetClosestPlacedTower(Vector2 mousePosition)
         {
-            return _placedTowers.OrderBy(placedTower => Vector2.Distance(placedTower.position, mousePosition)).First();
+            return _placedTowers.OrderBy(placedTower => Vector2.Distance(placedTower.position, mousePosition)).FirstOrDefault();
         }
     }
 }

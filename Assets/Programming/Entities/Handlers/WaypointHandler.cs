@@ -24,7 +24,7 @@ namespace Programming.Entities.Handlers
         {
             _path = path;
             _controller = controller;
-
+            
             PopulateWaypoints();
         }
 
@@ -60,7 +60,7 @@ namespace Programming.Entities.Handlers
 
         public Transform GetClosestWaypoint(Vector2 position)
         {
-            return _waypoints.OrderBy(waypoint => Vector2.Distance(waypoint.Transform.position, position)).First().Transform;
+            return _waypoints.OrderBy(waypoint => Vector2.Distance(waypoint.Transform.position, position)).FirstOrDefault()?.Transform;
         }
 
         private bool CanIncreaseIndex()
