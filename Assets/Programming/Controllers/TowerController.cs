@@ -55,24 +55,37 @@ namespace Programming.Controllers
             }
         }
 
+        private List<GameObject> GetEnemies()
+        {
+            List<GameObject> enemies = new List<GameObject>();
+            
+            // ReSharper disable once Unity.PreferNonAllocApi
+            var colliders = Physics2D.OverlapCircleAll(transform.position, model.Range);
+            foreach (Collider2D collider in colliders)
+            {
+                if (collider.CompareTag(Tags.Enemy.ToString()))
+                {
+                    enemies.Add(collider.gameObject);
+                }
+            }
+
+            return enemies;
+        }
+
         private GameObject GetClosestEnemy()
         {
             GameObject closestEnemy = null;
             float closestDistance = float.MaxValue;
             
-            // ReSharper disable once Unity.PreferNonAllocApi
-            var enemies = Physics2D.OverlapCircleAll(transform.position, model.Range);
-            foreach (Collider2D enemy in enemies)
+            List<GameObject> enemies = GetEnemies();
+
+            foreach (GameObject enemy in enemies)
             {
-                if (enemy.CompareTag(Tags.Enemy.ToString()))
+                float distance = Vector2.Distance(transform.position, enemy.transform.position);
+                if (distance < closestDistance)
                 {
-                    float distance = Vector2.Distance(transform.position, enemy.transform.position);
-                    if (distance < closestDistance)
-                    {
-                        closestDistance = distance;
-                        closestEnemy = enemy.gameObject;
-                        closestEnemy.GetComponent<SpriteRenderer>().color = Color.blue;
-                    }
+                    closestDistance = distance;
+                    closestEnemy = enemy;
                 }
             }
 
