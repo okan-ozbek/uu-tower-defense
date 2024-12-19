@@ -2056,6 +2056,101 @@ Transform:
   m_Children: []
   m_Father: {fileID: 702162032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1246137329
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3859260267772270034, guid: 6323ea34cfd903044807f847abfd618e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3859260267772270034, guid: 6323ea34cfd903044807f847abfd618e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3859260267772270034, guid: 6323ea34cfd903044807f847abfd618e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3859260267772270034, guid: 6323ea34cfd903044807f847abfd618e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3859260267772270034, guid: 6323ea34cfd903044807f847abfd618e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3859260267772270034, guid: 6323ea34cfd903044807f847abfd618e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3859260267772270034, guid: 6323ea34cfd903044807f847abfd618e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3859260267772270034, guid: 6323ea34cfd903044807f847abfd618e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3859260267772270034, guid: 6323ea34cfd903044807f847abfd618e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3859260267772270034, guid: 6323ea34cfd903044807f847abfd618e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168807925501449433, guid: 6323ea34cfd903044807f847abfd618e, type: 3}
+      propertyPath: m_Name
+      value: Square Hitscan Tower
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6168807925501449433, guid: 6323ea34cfd903044807f847abfd618e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1246137332}
+    - targetCorrespondingSourceObject: {fileID: 6168807925501449433, guid: 6323ea34cfd903044807f847abfd618e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1246137331}
+  m_SourcePrefab: {fileID: 100100000, guid: 6323ea34cfd903044807f847abfd618e, type: 3}
+--- !u!1 &1246137330 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6168807925501449433, guid: 6323ea34cfd903044807f847abfd618e, type: 3}
+  m_PrefabInstance: {fileID: 1246137329}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1246137331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246137330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b587510e5344c52a4e126064cfa5cc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  model: {fileID: 0}
+--- !u!114 &1246137332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246137330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e338586010d4b27bfaf7d090452607c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  configs:
+  - {fileID: 11400000, guid: c9a9bc4c1b3f98049bf9da19ba9266cc, type: 2}
 --- !u!1 &1262269033
 GameObject:
   m_ObjectHideFlags: 0
@@ -3532,3 +3627,4 @@ SceneRoots:
   - {fileID: 1910552292}
   - {fileID: 135044587}
   - {fileID: 1210359085}
+  - {fileID: 1246137329}

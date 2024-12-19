@@ -12,7 +12,10 @@ namespace Programming.Entities.Strategies
         {
             GameObject target = self.GetComponent<TowerController>().GetClosestEnemy();
 
-            OnUseTarget(target, self);
+            if (target)
+            {
+                OnUseTarget(target, self);
+            }
         }
     }
 }

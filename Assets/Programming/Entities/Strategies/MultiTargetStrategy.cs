@@ -11,11 +11,14 @@ namespace Programming.Entities.Strategies
     
         protected override void Handle(GameObject self)
         {
-            List<GameObject> targets = self.GetComponent<TowerController>().GetEnemies();
-
-            foreach (GameObject target in targets)
+            var targets = self.GetComponent<TowerController>().GetEnemies();
+            
+            if (targets.Count > 0)
             {
-                OnUseTarget(target, self);
+                foreach (GameObject target in targets)
+                {
+                    OnUseTarget(target, self);
+                }
             }
         }
     }
