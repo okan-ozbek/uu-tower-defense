@@ -1,24 +1,24 @@
-﻿using System.Collections.Generic;
-using Programming.Controllers;
+using Programming.Data;
 using Programming.Entities.Enums;
 using Programming.Entities.Strategies;
 
 namespace Programming.Entities.Factories
 {
-    public sealed class AbilityStrategyFactory
+    public static class AbilityStrategyFactory
     {
-        private readonly Dictionary<AbilityType, IAbilityStrategy> _strategies = new();
-        
-        public AbilityStrategyFactory(TowerController towerController)
+        public static IAbilityStrategy Create(AbstractAbilityData data)
         {
-            _strategies[AbilityType.Hitscan] = new HitScanStrategy(towerController);
-            _strategies[AbilityType.Projectile] = new ProjectileStrategy(towerController);
-            //_strategies[AttackType.Magic] = new MagicStrategy(towerController);
-        }
-        
-        public IAbilityStrategy GetStrategy(AbilityType abilityType)
-        {
-            return _strategies[abilityType];
+            if (data is ProjectileAbilityData { TargetType: TargetType.NoTarget } projectileData)
+            {
+                return new NoTargetStrategy(projectileData);
+            }
+
+            return data.TargetType switch
+            {
+                TargetType.SingleTarget => new SingleTargetStrategy(data),
+                TargetType.MultiTarget => new MultiTargetStrategy(data),
+                _ => null
+            };
         }
     }
 }

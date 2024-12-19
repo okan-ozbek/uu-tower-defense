@@ -14,17 +14,9 @@ namespace Programming.Models
         public float Cost => statConfig.cost;
         public float Range => statConfig.range;
         
-        public readonly List<AbilityStat> AbilityStats = new();
-        
         public override void Initialize()
         {
             Damage = new GenericStat<float>(statConfig.damage);
-
-            foreach (TowerAbilityConfig attackConfig in statConfig.abilityConfigs)
-            {
-                AbilityStat abilityStat = new AbilityStat(attackConfig);
-                AbilityStats.Add(abilityStat);
-            }
         }
     }
 }

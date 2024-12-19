@@ -1,7 +1,7 @@
-﻿using Programming.Entities.Enums;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Programming.Entities.Factories;
 using Programming.Entities.Handlers;
-using Programming.Entities.Stats;
 using Programming.Models;
 using Programming.Utility.Enums;
 using UnityEngine;
@@ -13,7 +13,6 @@ namespace Programming.Controllers
     )]
     public class TowerController : Controller<TowerModel>
     {
-        private AbilityStrategyFactory _abilityStrategyFactory;
         private WaypointHandler _waypointHandler;
 
         protected override void Awake()
@@ -21,64 +20,34 @@ namespace Programming.Controllers
             base.Awake();
             
             _waypointHandler = new WaypointHandler(GameObject.FindWithTag(Tags.Path.ToString()).transform);
-            _abilityStrategyFactory = new AbilityStrategyFactory(this);
-            
             LookAtTarget(null);
         }
 
         private void Update()
         {
-            UpdateAbilityStatsCooldownTime();
-            
             GameObject closestEnemy = GetClosestEnemy();
             LookAtTarget(closestEnemy);
             
             if (closestEnemy)
             {
-                foreach (AbilityStat abilityStat in model.AbilityStats)
-                {
-                    if (abilityStat.OnCooldown() == false)
-                    {
-                        _abilityStrategyFactory.GetStrategy(AbilityType.Hitscan).Use(closestEnemy, abilityStat);
-                    }
-                }
-
                 Debug.DrawLine(transform.position, closestEnemy.transform.position, Color.red);
             }
         }
 
-        private void UpdateAbilityStatsCooldownTime()
+        public List<GameObject> GetEnemies()
         {
-            foreach (AbilityStat abilityStat in model.AbilityStats)
-            {
-                abilityStat.UpdateCooldownTime();
-            }
-        }
-
-        private List<GameObject> GetEnemies()
-        {
-            List<GameObject> enemies = new List<GameObject>();
-            
             // ReSharper disable once Unity.PreferNonAllocApi
-            var colliders = Physics2D.OverlapCircleAll(transform.position, model.Range);
-            foreach (Collider2D collider in colliders)
-            {
-                if (collider.CompareTag(Tags.Enemy.ToString()))
-                {
-                    enemies.Add(collider.gameObject);
-                }
-            }
+            var others = Physics2D.OverlapCircleAll(transform.position, model.Range);
 
-            return enemies;
+            return (from other in others where other.CompareTag(Tags.Enemy.ToString()) select other.gameObject).ToList();
         }
 
-        private GameObject GetClosestEnemy()
+        public GameObject GetClosestEnemy()
         {
             GameObject closestEnemy = null;
             float closestDistance = float.MaxValue;
             
-            List<GameObject> enemies = GetEnemies();
-
+            var enemies = GetEnemies();
             foreach (GameObject enemy in enemies)
             {
                 float distance = Vector2.Distance(transform.position, enemy.transform.position);

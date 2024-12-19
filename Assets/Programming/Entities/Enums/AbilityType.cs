@@ -1,9 +1,8 @@
-﻿namespace Programming.Entities.Enums
+namespace Programming.Entities.Enums
 {
     public enum AbilityType
     {
         Hitscan,
-        Projectile,
-        Magic,
+        Projectile
     }
 }
