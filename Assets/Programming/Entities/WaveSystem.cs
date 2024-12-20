@@ -48,15 +48,16 @@ namespace Programming.Entities
             _currentWave++;
             _budget = _currentWave * multiplier;
             
-            AuctionEnemies(enemies);
+            AuctionEnemies();
         }
 
-        private void AuctionEnemies(List<EnemySpecification> purchasableEnemies)
+        private void AuctionEnemies()
         {
-            while (_budget > 0)
+            var purchasableEnemies = new List<EnemySpecification>(enemies);
+            
+            while (_budget > 0 && purchasableEnemies.Count > 0)
             {
-                EnemySpecification specification = purchasableEnemies[Random.Range(0, enemies.Count)];
-
+                EnemySpecification specification = purchasableEnemies[Random.Range(0, purchasableEnemies.Count)];
                 if (specification.cost > _budget)
                 {
                     purchasableEnemies.Remove(specification);

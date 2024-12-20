@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Programming.Configs
 {
@@ -9,7 +8,5 @@ namespace Programming.Configs
         public float cost;
         public float range;
         public float damage;
-
-        public List<TowerAbilityConfig> abilityConfigs;
     }
 }

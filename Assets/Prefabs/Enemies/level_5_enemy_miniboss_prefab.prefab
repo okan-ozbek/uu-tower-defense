@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8799999703367766515}
   - component: {fileID: 8579522606254988170}
   m_Layer: 0
-  m_Name: Temporary Enemy
+  m_Name: level_5_enemy_miniboss_prefab
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.23, y: -2.53, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.99020815, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -179,4 +179,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e8359fa35f147a3be84e52ff659cb7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statConfig: {fileID: 11400000, guid: 546ac952da1109e499895da6f187631d, type: 2}
+  statConfig: {fileID: 11400000, guid: 46d9b226fc43ee34dbbd16817a02f2f9, type: 2}

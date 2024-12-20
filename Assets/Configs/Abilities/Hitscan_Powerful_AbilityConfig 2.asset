@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a7184edae744bb396f2373a5fbd158b, type: 3}
-  m_Name: Enemy_StatConfig
+  m_Script: {fileID: 11500000, guid: 4e8923b53a3a8cd4198c646a2a80a101, type: 3}
+  m_Name: Hitscan_Powerful_AbilityConfig 2
   m_EditorClassIdentifier: 
-  health: 10
+  range: 3
   damage: 5
-  speed: 2
-  money: 5
+  cooldown: 1.5
+  count: 1
+  targetType: 1

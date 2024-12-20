@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d86e09fcafe3443c83b0cfd747f0089f, type: 3}
-  m_Name: Tower_Triangle_StatConfig
+  m_Script: {fileID: 11500000, guid: 2a7184edae744bb396f2373a5fbd158b, type: 3}
+  m_Name: level_6_enemy
   m_EditorClassIdentifier: 
-  cost: 5
-  range: 2
-  damage: 5
-  abilityConfigs:
-  - {fileID: 11400000, guid: bb059ecf8e861254a871643f48232e23, type: 2}
+  health: 6
+  damage: 6
+  speed: 2.7
+  money: 6
