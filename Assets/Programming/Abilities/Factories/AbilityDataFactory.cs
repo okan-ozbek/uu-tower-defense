@@ -1,7 +1,7 @@
 ﻿using Programming.Configs;
 using Programming.Data;
 
-namespace Programming.Entities.Factories
+namespace Programming.Abilities.Factories
 {
     public static class AbilityDataFactory
     {

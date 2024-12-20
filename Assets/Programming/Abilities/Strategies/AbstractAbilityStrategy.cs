@@ -2,7 +2,7 @@ using Programming.Data;
 using Programming.Models;
 using UnityEngine;
 
-namespace Programming.Entities.Strategies
+namespace Programming.Abilities.Strategies
 {
     public abstract class AbstractAbilityStrategy : IAbilityStrategy
     {
@@ -35,7 +35,7 @@ namespace Programming.Entities.Strategies
                     return;
                 case ProjectileAbilityData projectileData:
                 {
-                    Object instance = Object.Instantiate(projectileData.ProjectilePrefab, self.transform.position, Quaternion.identity);
+                    Object instance = Object.Instantiate(projectileData.ProjectilePrefab, self.transform.position, self.transform.rotation);
                     projectileData.ResetCooldown();
                     return;
                 }

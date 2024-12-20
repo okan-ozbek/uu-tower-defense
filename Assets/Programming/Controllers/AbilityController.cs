@@ -1,4 +1,5 @@
-﻿using Programming.Models;
+﻿using Programming.Abilities;
+using Programming.Models;
 using UnityEngine;
 
 namespace Programming.Controllers
@@ -9,13 +10,13 @@ namespace Programming.Controllers
     )]
     public class AbilityController : Controller<AbilityModel>
     {
-        private Entities.Ability _currentAbility;
+        private Ability _currentAbility;
         private int _currentIndex;
         
         private void Start()
         {
             _currentIndex = 0;
-            _currentAbility = new Entities.Ability(model.Abilities[_currentIndex]);
+            _currentAbility = new Ability(model.Abilities[_currentIndex]);
         }
 
         private void Update()

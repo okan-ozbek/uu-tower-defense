@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Programming.Entities.Strategies
+namespace Programming.Abilities.Strategies
 {
     public interface IAbilityStrategy
     {

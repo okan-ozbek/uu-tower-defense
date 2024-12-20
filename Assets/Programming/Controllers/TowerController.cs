@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Programming.Entities.Factories;
 using Programming.Entities.Handlers;
 using Programming.Models;
 using Programming.Utility.Enums;
@@ -20,7 +19,7 @@ namespace Programming.Controllers
             base.Awake();
             
             _waypointHandler = new WaypointHandler(GameObject.FindWithTag(Tags.Path.ToString()).transform);
-            LookAtTarget(null);
+            LookAtTarget(_waypointHandler.GetClosestWaypoint(transform.position).gameObject);
         }
 
         private void Update()
@@ -68,18 +67,16 @@ namespace Programming.Controllers
 
         private void LookAtTarget(GameObject target)
         {
-            Transform lookAt = (target)
-                ? target.transform
-                : GetClosestWaypoint();
-            
-            if (lookAt)
+            if (target == false)
             {
-                Vector3 direction = lookAt.position - transform.position;
-                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-                
-                transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+                return;
             }
-        }
+            
+            Vector3 direction = target.transform.position - transform.position;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90.0f;
+            
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+         }
 
         private void OnDrawGizmos()
         {

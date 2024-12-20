@@ -1,8 +1,8 @@
+using Programming.Abilities.Strategies;
 using Programming.Data;
 using Programming.Entities.Enums;
-using Programming.Entities.Strategies;
 
-namespace Programming.Entities.Factories
+namespace Programming.Abilities.Factories
 {
     public static class AbilityStrategyFactory
     {

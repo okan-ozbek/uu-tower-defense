@@ -1,9 +1,9 @@
+using Programming.Abilities.Factories;
+using Programming.Abilities.Strategies;
 using Programming.Data;
-using Programming.Entities.Factories;
-using Programming.Entities.Strategies;
 using UnityEngine;
 
-namespace Programming.Entities
+namespace Programming.Abilities
 {
     public class Ability
     {

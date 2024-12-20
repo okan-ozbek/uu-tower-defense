@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
+using Programming.Abilities.Factories;
 using Programming.Configs;
 using Programming.Data;
-using Programming.Entities.Factories;
 using UnityEngine;
 
 namespace Programming.Models

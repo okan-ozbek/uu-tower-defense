@@ -2,7 +2,7 @@ using Programming.Controllers;
 using Programming.Data;
 using UnityEngine;
 
-namespace Programming.Entities.Strategies
+namespace Programming.Abilities.Strategies
 {
     public class SingleTargetStrategy : AbstractAbilityStrategy
     {
