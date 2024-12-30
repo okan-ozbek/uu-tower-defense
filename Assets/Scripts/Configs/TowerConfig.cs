@@ -8,15 +8,15 @@ namespace Configs
     {
         [Header("UI")] public Sprite icon;
         
-        [Header("Attack settings")]
-        public AttackPatternType attackPatternType;
-        public int count;
-        public float burstCooldown;
-        
         [Header("Tower settings")]
         public float cost;
         public float range;
         public float cooldown;
         public bool isStationary;
+        
+        [Header("Upgrades")]
+        public int maxRangeUpgrades;
+        public int maxSpeedUpgrades;
+        public int maxUpgradeUpgrades;
     }
 }

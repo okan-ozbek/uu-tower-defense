@@ -55,7 +55,10 @@ namespace Views
             foreach (ShopButtonDTO shopButton in _shopButtons)
             {
                 _waveInProgress = false;
-                shopButton.Button.interactable = true;
+                if (shopButton.WasInteractable)
+                {
+                    shopButton.Button.interactable = true;
+                }
             }
         }
     }

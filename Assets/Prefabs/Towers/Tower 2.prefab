@@ -190,7 +190,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4301cd2d0ecd4410845c548af49090e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 8856065851948956114, guid: a87ef8c031eaa9249a786641cd06f18b, type: 3}
+  attacks:
+  - {fileID: 11400000, guid: 2b46d14d1eb6cf446afd49ed291dd6f0, type: 2}
+  - {fileID: 11400000, guid: a2788fcbfc5e0ff4d9486543a54e883c, type: 2}
+  - {fileID: 11400000, guid: 469acd187dede634f891c5d153e89cda, type: 2}
+  - {fileID: 11400000, guid: 80e68899549e40345a4fb4ac8bb4b78b, type: 2}
 --- !u!114 &1333175183719671923
 MonoBehaviour:
   m_ObjectHideFlags: 0

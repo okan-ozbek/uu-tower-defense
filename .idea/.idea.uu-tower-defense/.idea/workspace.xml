@@ -5,60 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="756c7f63-9f78-4925-85f6-3229373c16b7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/DTOs/UpgradeButtonDTO.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/DTOs/UpgradeButtonDTO.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Environment/Foliage.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Environment/Foliage.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Environment/Path.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Environment/Path.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Environment/Terrain.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Environment/Terrain.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Main screen/Environment/Foliage (1).png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Main screen/Environment/Foliage (1).png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Main screen/Environment/Path (1).png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Main screen/Environment/Path (1).png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Main screen/Environment/Vector 3.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Main screen/Environment/Vector 3.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Main screen/UI/Exit button.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Main screen/UI/Exit button.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Main screen/UI/Settings button.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Main screen/UI/Settings button.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Main screen/UI/Start button.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Main screen/UI/Start button.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Main screen/UI/Unity University..png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Main screen/UI/Unity University..png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UI/Main/Close game.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/UI/Main/Close game.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UI/Main/Settings.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/UI/Main/Settings.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UI/Main/Wave button.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/UI/Main/Wave button.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UI/Modal/Ellipse 12.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/UI/Modal/Ellipse 12.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UI/Modal/Rectangle 16.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/UI/Modal/Rectangle 16.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Configs/Enemies/Enemy_Level_10_Config.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Configs/Enemies/Enemy_Level_10_Config.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Configs/Enemies/Enemy_Level_2_Config.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Configs/Enemies/Enemy_Level_2_Config.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Configs/Enemies/Enemy_Level_3_Config.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Configs/Enemies/Enemy_Level_3_Config.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Configs/Enemies/Enemy_Level_4_Config.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Configs/Enemies/Enemy_Level_4_Config.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Configs/Enemies/Enemy_Level_5_Config.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Configs/Enemies/Enemy_Level_5_Config.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Configs/Enemies/Enemy_Level_6_Config.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Configs/Enemies/Enemy_Level_6_Config.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Configs/Enemies/Enemy_Level_8_Config.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Configs/Enemies/Enemy_Level_8_Config.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Configs/Enemies/Enemy_Level_9_Config.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Configs/Enemies/Enemy_Level_9_Config.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Configs/Towers/Tower1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Configs/Towers/Tower1.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Configs/Towers/Tower2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Configs/Towers/Tower2.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Configs/Towers/Tower3.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Configs/Towers/Tower3.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Configs/AttackConfig.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Configs/AttackConfig.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enums/UpgradeButtonType.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enums/UpgradeButtonType.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.uu-tower-defense/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.uu-tower-defense/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Towers/Tower 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Towers/Tower 1.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Towers/Tower 2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Towers/Tower 2.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Towers/Tower 3.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Towers/Tower 3.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Tower Button Template.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Tower Button Template.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Tower Button Template.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Tower Button Template.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Configs/TowerConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Configs/TowerConfig.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/GameController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/GameController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/Towers/Attacks/PlusAttack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/Towers/Attacks/PlusAttack.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/Towers/TowerAttackController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/Towers/TowerAttackController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/Towers/TowerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/Towers/TowerController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/Towers/TowerUpgradeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/Towers/TowerUpgradeController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/UI/ButtonController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/UI/ButtonController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/UI/SettingsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/UI/SettingsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/UI/ShopController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/UI/ShopController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/UI/UIController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/UI/UIController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enums/AttackPatternType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enums/AttackPatternType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Models/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Models/Game.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Models/Settings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Models/Settings.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DTOs/ShopButtonDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DTOs/ShopButtonDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DTOs/TowerAttackDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DTOs/TowerAttackDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DTOs/UpgradeButtonDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DTOs/UpgradeButtonDTO.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Models/Tower.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Models/Tower.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Singletons/MainThemeSingleton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Singletons/MainThemeSingleton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Singletons/PauseSingleton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Singletons/PauseSingleton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Singletons/Singleton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Singletons/Singleton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Views/StatsPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Views/UpgradePanel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Views/StatsPanel.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Views/UpgradePanel.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Views/ShopPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Views/ShopPanel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Views/UpgradePanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Views/UpgradePanel.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +110,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1735582245692</updated>
-      <workItem from="1735582248273" duration="9606000" />
+      <workItem from="1735582248273" duration="14771000" />
     </task>
     <servers />
   </component>

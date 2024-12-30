@@ -1,25 +1,29 @@
-﻿using Controllers.Towers.Attacks;
+﻿using System.Collections.Generic;
+using Configs;
+using Controllers.Towers.Attacks;
 using Controllers.UI;
 using DTOs;
 using Models;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Controllers.Towers
 {
     public class TowerAttackController : Controller<Tower>
     {
-        [SerializeField] private GameObject projectilePrefab;
+        [SerializeField] private List<AttackConfig> attacks;
 
         private AttackStrategy _attackStrategy;
         
         private GameObject _currentTarget;
         private bool _onCooldown;
+        private int _attackIndex;
 
         protected override void Subscribe()
         {
             ButtonController.OnTowerIncreaseRangeClicked += HandleUpgrade;
             ButtonController.OnTowerIncreaseSpeedClicked += HandleUpgrade;
-            ButtonController.OnTowerUpgradeClicked += HandleUpgrade;
+            ButtonController.OnTowerUpgradeClicked += HandleTowerUpgrade;
             TowerDetectionController.OnTargetChanged += HandleTargetChanged;
         }
         
@@ -33,7 +37,7 @@ namespace Controllers.Towers
 
         private void Start()
         {
-            _attackStrategy = AttackFactory.Create(new TowerAttackDTO(Model, projectilePrefab, gameObject));
+            _attackStrategy = AttackFactory.Create(new TowerAttackDTO(Model, attacks[_attackIndex], gameObject));
         }
 
         private void Update()
@@ -48,7 +52,25 @@ namespace Controllers.Towers
 
         private void HandleUpgrade(TowerController controller)
         {
-            _attackStrategy = AttackFactory.Create(new TowerAttackDTO(Model, projectilePrefab, gameObject));
+            if (Model == false)
+            {
+                return;
+            }
+            
+            Debug.Log(Model.Cooldown.Value);
+            _attackStrategy = AttackFactory.Create(new TowerAttackDTO(Model, attacks[_attackIndex], gameObject));
+        }
+        
+        private void HandleTowerUpgrade(TowerController controller)
+        {
+            if (_attackIndex + 1 >= attacks.Count)
+            {
+                return;
+            }
+            
+            _attackIndex++;
+            
+            HandleUpgrade(controller);
         }
     }
 }

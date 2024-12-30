@@ -58,16 +58,19 @@ namespace Controllers
         private void HandleTowerIncreaseRange(TowerController controller)
         {
             Model.Money.Value -= 15f;
+            controller.Model.Spent.Value += 15f;
         }
 
         private void HandleTowerIncreaseSpeed(TowerController controller)
         {
             Model.Money.Value -= 25f;
+            controller.Model.Spent.Value += 25f;
         }
 
         private void HandleTowerUpgrade(TowerController controller)
         {
-            Model.Money.Value -= 100f;
+            Model.Money.Value -= 1;
+            controller.Model.Spent.Value += 100f;
         }
 
         private void HandleTowerSelected(TowerController controller)

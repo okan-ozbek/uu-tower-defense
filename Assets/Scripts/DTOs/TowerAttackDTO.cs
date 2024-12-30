@@ -1,4 +1,5 @@
-﻿using Enums;
+﻿using Configs;
+using Enums;
 using Models;
 using UnityEngine;
 
@@ -13,14 +14,14 @@ namespace DTOs
         public readonly int Count;
         public readonly float BurstCooldown;
         
-        public TowerAttackDTO(Tower model, GameObject projectilePrefab, GameObject tower)
+        public TowerAttackDTO(Tower model, AttackConfig config, GameObject tower)
         {
-            AttackPatternType = model.AttackPatternType;
-            ProjectilePrefab = projectilePrefab;
+            AttackPatternType = config.attackPatternType;
+            ProjectilePrefab = config.projectilePrefab;
             Tower = tower;
             Cooldown = model.Cooldown.Value;
-            Count = model.Count;
-            BurstCooldown = model.BurstCooldown;
+            Count = config.count;
+            BurstCooldown = config.burstCooldown;
         }
     }
 }
