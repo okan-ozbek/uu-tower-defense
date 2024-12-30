@@ -12,11 +12,9 @@ namespace Models
         public Stat<float> MasterVolume;
         public Stat<float> SoundEffects;
         public Stat<float> MusicVolume;
-        
-        protected override void Start()
+
+        private void Awake()
         {
-            
-            
             MasterVolume.OnValueChanged += (value) => OnMasterVolumeChanged?.Invoke(value);
             SoundEffects.OnValueChanged += (value) => OnSoundEffectsChanged?.Invoke(value);
             MusicVolume.OnValueChanged += (value) => OnMusicVolumeChanged?.Invoke(value);
@@ -24,6 +22,11 @@ namespace Models
             MasterVolume.Value = 1.0f;
             SoundEffects.Value = 1.0f;
             MusicVolume.Value = 1.0f;
+        }
+        
+        protected override void Start()
+        {
+            
         }
     }
 }

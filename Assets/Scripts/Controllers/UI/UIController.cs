@@ -12,7 +12,7 @@ namespace Controllers.UI
         [SerializeField] private GameObject viewManager;
         
         private ShopPanel _shopPanel;
-        private StatsPanel _statsPanel;
+        private UpgradePanel _upgradePanel;
         private StartWaveContainer _startWaveContainer;
         private SettingsModal _settingsModal;
         private QuitGameModal _quitGameModal;
@@ -20,7 +20,7 @@ namespace Controllers.UI
         private void Awake()
         {
             _shopPanel = viewManager.GetComponent<ShopPanel>();
-            _statsPanel = viewManager.GetComponent<StatsPanel>();
+            _upgradePanel = viewManager.GetComponent<UpgradePanel>();
             _startWaveContainer = viewManager.GetComponent<StartWaveContainer>();
             _settingsModal = viewManager.GetComponent<SettingsModal>();
             _quitGameModal = viewManager.GetComponent<QuitGameModal>();
@@ -90,14 +90,14 @@ namespace Controllers.UI
         {
             _shopPanel.Deactivate();
             _startWaveContainer.Deactivate();
-            _statsPanel.Activate();
+            _upgradePanel.Activate();
         }
 
         private void GetShopPanel()
         {
             _shopPanel.Activate();
             _startWaveContainer.Activate();
-            _statsPanel.Deactivate();
+            _upgradePanel.Deactivate();
         }
         
         private void GetShopPanel(TowerController controller)

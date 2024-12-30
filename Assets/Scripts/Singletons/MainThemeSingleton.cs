@@ -1,22 +1,22 @@
-﻿using System;
+﻿using Controllers.UI;
 using Models;
 using UnityEngine;
 
 namespace Singletons
 {
-    public class MainThemeSingleton : Singleton
+    public class MainThemeSingleton : Singleton<MainThemeSingleton>
     {
         [SerializeField] private AudioSource audioSource;
 
         private void OnEnable()
         {
-            Settings.OnMasterVolumeChanged += HandleVolumeChange;
+            SettingsController.OnInitializeSettings += HandleInitializeSettings;
             Settings.OnMusicVolumeChanged += HandleVolumeChange;
         }
 
         private void OnDisable()
         {
-            Settings.OnMasterVolumeChanged -= HandleVolumeChange;
+            SettingsController.OnInitializeSettings -= HandleInitializeSettings;
             Settings.OnMusicVolumeChanged -= HandleVolumeChange;
         }
 
@@ -27,8 +27,12 @@ namespace Singletons
 
         private void HandleVolumeChange(float value)
         {
-            Debug.Log("Hello world");
             audioSource.volume = value;
+        }
+        
+        private void HandleInitializeSettings(Settings settings)
+        {
+            audioSource.volume = settings.MusicVolume.Value;
         }
     }
 }

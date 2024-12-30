@@ -10,7 +10,9 @@ namespace Controllers.UI
 {
     public class ButtonController : MonoBehaviour
     {
-        [Header("Tower")]
+        [Header("Tower")] 
+        [SerializeField] private Button towerIncreaseRangeButton;
+        [SerializeField] private Button towerIncreaseSpeedButton;
         [SerializeField] private Button towerUpgradeButton;
         [SerializeField] private Button towerReturnButton;
         [SerializeField] private Button towerSellButton;
@@ -29,6 +31,8 @@ namespace Controllers.UI
         [SerializeField] private Button cancelSettingsButton;
 
         #region Events
+        public static event Action<TowerController> OnTowerIncreaseRangeClicked;
+        public static event Action<TowerController> OnTowerIncreaseSpeedClicked;
         public static event Action<TowerController> OnTowerUpgradeClicked;
         public static event Action<TowerController> OnTowerSellClicked;
         public static event Action OnReturnFromStatsClicked;
@@ -49,6 +53,8 @@ namespace Controllers.UI
         {
             MouseSelectionController.OnTowerSelected += HandleTowerSelected;
             
+            towerIncreaseRangeButton.onClick.AddListener(() => OnTowerIncreaseRangeClicked?.Invoke(_selectedTower));
+            towerIncreaseSpeedButton.onClick.AddListener(() => OnTowerIncreaseSpeedClicked?.Invoke(_selectedTower));
             towerUpgradeButton.onClick.AddListener(() => OnTowerUpgradeClicked?.Invoke(_selectedTower));
             towerReturnButton.onClick.AddListener(() => OnReturnFromStatsClicked?.Invoke());
             towerSellButton.onClick.AddListener(() => OnTowerSellClicked?.Invoke(_selectedTower));
@@ -68,6 +74,8 @@ namespace Controllers.UI
         {
             MouseSelectionController.OnTowerSelected -= HandleTowerSelected;
             
+            towerIncreaseRangeButton.onClick.RemoveAllListeners();
+            towerIncreaseSpeedButton.onClick.RemoveAllListeners();
             towerUpgradeButton.onClick.RemoveAllListeners();
             towerReturnButton.onClick.RemoveAllListeners();
             towerSellButton.onClick.RemoveAllListeners();
@@ -82,13 +90,6 @@ namespace Controllers.UI
         private void HandleTowerSelected(TowerController controller)
         {
             _selectedTower = controller;
-            
-            SetSellTowerText();
-        }
-
-        private void SetSellTowerText()
-        {
-            towerSellButton.GetComponentInChildren<TMP_Text>().text = $"Sell tower (${_selectedTower.Model.Sell})";
         }
     }
 }

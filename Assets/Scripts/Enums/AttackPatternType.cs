@@ -4,7 +4,6 @@
     {
         Default,
         Plus,
-        Cross,
         Cone,
     }
 }

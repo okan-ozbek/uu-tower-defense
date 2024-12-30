@@ -16,4 +16,4 @@ MonoBehaviour:
   damage: 5
   speed: 2.8
   reward: 5
-  cost: 5
+  cost: 11

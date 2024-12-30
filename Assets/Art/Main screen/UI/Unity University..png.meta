@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Unity University._0: -4774506480416844557
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

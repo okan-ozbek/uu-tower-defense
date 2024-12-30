@@ -11,20 +11,31 @@ namespace Controllers.Towers
     )]
     public class TowerController : Controller<Tower>
     {
+        [SerializeField] private GameObject radius;
+        
         protected override void Subscribe()
         {
             TowerDetectionController.OnTargetChanged += HandleTargetChanged;
             ButtonController.OnTowerSellClicked += HandleTowerSellClicked;
+            ButtonController.OnReturnFromStatsClicked += HandleTowerUnselected;
+            MouseSelectionController.OnTowerSelected += HandleTowerSelected;
         }
 
         protected override void Unsubscribe()
         {
             TowerDetectionController.OnTargetChanged -= HandleTargetChanged;
             ButtonController.OnTowerSellClicked -= HandleTowerSellClicked;
+            ButtonController.OnReturnFromStatsClicked -= HandleTowerUnselected;
+            MouseSelectionController.OnTowerSelected -= HandleTowerSelected;
         }
 
         private void HandleTargetChanged(GameObject target)
         {
+            if (Model.IsStationary)
+            {
+                return;
+            }
+            
             Vector3 targetPosition = (target) 
                 ? (Vector2)target.transform.position
                 : PathController.GetClosestWaypoint(transform.position);
@@ -42,9 +53,44 @@ namespace Controllers.Towers
             }
         }
         
+        private void HandleTowerSelected(TowerController controller)
+        {
+            if (Model.Guid == controller.Model.Guid)
+            {
+                radius.SetActive(true);
+                SetRadius();
+            }
+
+            if (Model.Guid != controller.Model.Guid)
+            {
+                radius.SetActive(false);
+            }
+        }
+
+        private void HandleTowerUnselected()
+        {
+            radius.SetActive(false);
+        }
+        
+        public void HandleTowerIncreaseRange()
+        {
+            Model.Range.Value += (Model.BaseRange * 0.3f);
+            SetRadius();
+        }
+        
+        public void HandleTowerIncreaseSpeed()
+        {
+            Model.Cooldown.Value -= (Model.BaseCooldown * 0.2f);
+        }
+        
         public void HandleTowerUpgrade()
         {
-            // Empty for now
+            
+        }
+
+        private void SetRadius()
+        {
+            radius.transform.localScale = new Vector2(Model.Range.Value * 2.0f, Model.Range.Value * 2.0f);
         }
         
         private void OnDrawGizmos()

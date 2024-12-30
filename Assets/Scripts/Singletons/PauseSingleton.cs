@@ -2,7 +2,7 @@
 
 namespace Singletons
 {
-    public class PauseSingleton : Singleton
+    public class PauseSingleton : Singleton<PauseSingleton>
     {
         public static bool IsPaused { get; private set; }
         

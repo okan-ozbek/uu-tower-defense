@@ -2,19 +2,17 @@
 
 namespace Singletons
 {
-    public abstract class Singleton : MonoBehaviour
+    public class Singleton<TInstance> : MonoBehaviour where TInstance : Component
     {
-        public static Singleton Instance { get; private set; }
-
-        private void Awake()
+        public static TInstance Instance { get; private set; }
+	
+        public virtual void Awake ()
         {
-            if (Instance && Instance != this)
-            {
-                Destroy(gameObject);
-            }
-            else
-            {
-                Instance = this;
+            if (Instance == null) {
+                Instance = this as TInstance;
+                DontDestroyOnLoad (this);
+            } else {
+                Destroy (gameObject);
             }
         }
     }

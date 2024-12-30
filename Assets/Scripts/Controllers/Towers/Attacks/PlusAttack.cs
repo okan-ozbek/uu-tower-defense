@@ -1,5 +1,4 @@
 ﻿using DTOs;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Controllers.Towers.Attacks
@@ -18,12 +17,12 @@ namespace Controllers.Towers.Attacks
             }
             
 
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < TowerAttackDTO.Count; i++)
             {
                 Object.Instantiate(
                     TowerAttackDTO.ProjectilePrefab, 
                     TowerAttackDTO.Tower.transform.position, 
-                    Quaternion.Euler(Vector3.forward * i * 45f)
+                    Quaternion.Euler(Vector3.forward * i * (360f / TowerAttackDTO.Count))
                 );
             }
 

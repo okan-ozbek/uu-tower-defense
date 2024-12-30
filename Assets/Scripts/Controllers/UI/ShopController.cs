@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Models;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,7 +21,7 @@ namespace Controllers.UI
             {
                 GameObject instance = Instantiate(buttonPrefab, buttonParent.transform.position, Quaternion.identity);
                 instance.transform.SetParent(buttonParent.transform);
-                instance.GetComponentInChildren<TextMeshProUGUI>().text = tower.name;
+                instance.GetComponent<Image>().sprite = tower.GetComponent<Tower>().Icon;
                 instance.GetComponent<Button>().onClick.AddListener(() => OnClickShopTowerButton(tower));
                 
                 OnButtonCreated?.Invoke(instance, tower.GetComponent<Tower>());

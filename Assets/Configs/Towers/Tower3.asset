@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af7a4aa0d88f4f80967a16f8fb0ac2c8, type: 3}
   m_Name: Tower3
   m_EditorClassIdentifier: 
-  attackPatternType: 1
-  count: 4
-  burstCooldown: 4
-  cost: 20
+  icon: {fileID: -6809907661698028246, guid: 5d1690b28aae17447b022715a8d84132, type: 3}
+  attackPatternType: 0
+  count: 1
+  burstCooldown: 0
+  cost: 35
   range: 3
-  cooldown: 1
+  cooldown: 2
+  isStationary: 0
