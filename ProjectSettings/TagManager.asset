@@ -4,8 +4,9 @@
 TagManager:
   serializedVersion: 3
   tags:
+  - GUI
+  - Tower
   - Enemy
-  - Path
   layers:
   - Default
   - TransparentFX
