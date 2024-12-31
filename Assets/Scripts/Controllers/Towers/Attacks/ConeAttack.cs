@@ -1,4 +1,5 @@
 ﻿using DTOs;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Controllers.Towers.Attacks
@@ -32,6 +33,8 @@ namespace Controllers.Towers.Attacks
                     TowerAttackDTO.Tower.transform.position, 
                     TowerAttackDTO.Tower.transform.rotation * Quaternion.Euler(Vector3.forward * angle)
                 );
+
+                InvokeOnAttack();
             }
 
             return true;

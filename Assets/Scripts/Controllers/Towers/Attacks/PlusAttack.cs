@@ -24,6 +24,8 @@ namespace Controllers.Towers.Attacks
                     TowerAttackDTO.Tower.transform.position, 
                     Quaternion.Euler(Vector3.forward * i * (360f / TowerAttackDTO.Count))
                 );
+                
+                InvokeOnAttack();
             }
 
             return true;

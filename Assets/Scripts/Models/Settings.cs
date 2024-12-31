@@ -19,9 +19,9 @@ namespace Models
             SoundEffects.OnValueChanged += (value) => OnSoundEffectsChanged?.Invoke(value);
             MusicVolume.OnValueChanged += (value) => OnMusicVolumeChanged?.Invoke(value);
 
-            MasterVolume.Value = 1.0f;
-            SoundEffects.Value = 1.0f;
-            MusicVolume.Value = 1.0f;
+            MasterVolume.Value = 0.3f;
+            SoundEffects.Value = 0.3f;
+            MusicVolume.Value = 0.3f;
         }
         
         protected override void Start()

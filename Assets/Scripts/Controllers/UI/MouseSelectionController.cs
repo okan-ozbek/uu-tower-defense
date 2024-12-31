@@ -2,6 +2,7 @@
 using Controllers.Towers;
 using Enums;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Utility;
 
 namespace Controllers.UI
@@ -19,6 +20,11 @@ namespace Controllers.UI
     
         public void Update()
         {
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                return;
+            }
+            
             Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.GetRayIntersection(ray, 100.0f);
         

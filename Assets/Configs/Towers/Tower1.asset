@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Tower1
   m_EditorClassIdentifier: 
   icon: {fileID: -6358774903214245584, guid: 05e0a9f7594668a41b04522195042c18, type: 3}
-  attackPatternType: 0
-  count: 1
-  burstCooldown: 0
   cost: 10
   range: 2
   cooldown: 0.5
   isStationary: 0
+  maxRangeUpgrades: 3
+  maxSpeedUpgrades: 3
+  maxUpgradeUpgrades: 3

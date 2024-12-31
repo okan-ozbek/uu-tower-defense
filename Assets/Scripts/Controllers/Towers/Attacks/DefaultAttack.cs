@@ -30,6 +30,9 @@ namespace Controllers.Towers.Attacks
                     TowerAttackDTO.Tower.transform.position, 
                     TowerAttackDTO.Tower.transform.rotation
                 );
+                
+                InvokeOnAttack();
+                
                 yield return new WaitForSeconds(TowerAttackDTO.BurstCooldown);
             }
         }

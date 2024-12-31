@@ -1,4 +1,5 @@
-﻿using DTOs;
+﻿using System;
+using DTOs;
 using Models;
 using UnityEngine;
 
@@ -6,6 +7,8 @@ namespace Controllers.Towers.Attacks
 {
     public abstract class AttackStrategy
     {
+        public static event Action OnAttack;
+        
         private bool _onCooldown;
         private float _timePassed;
 
@@ -31,6 +34,11 @@ namespace Controllers.Towers.Attacks
         }
 
         protected abstract bool Action(GameObject target, float deltaTime);
+        
+        protected void InvokeOnAttack()
+        {
+            OnAttack?.Invoke();
+        }
         
         private void CalculateCooldown(float deltaTime)
         {
