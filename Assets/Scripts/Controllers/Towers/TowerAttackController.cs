@@ -31,7 +31,7 @@ namespace Controllers.Towers
         {
             ButtonController.OnTowerIncreaseRangeClicked -= HandleUpgrade;
             ButtonController.OnTowerIncreaseSpeedClicked -= HandleUpgrade;
-            ButtonController.OnTowerUpgradeClicked -= HandleUpgrade;
+            ButtonController.OnTowerUpgradeClicked += HandleTowerUpgrade;
             TowerDetectionController.OnTargetChanged -= HandleTargetChanged;
         }
 
@@ -45,24 +45,29 @@ namespace Controllers.Towers
             _attackStrategy.Attack(_currentTarget, Time.deltaTime);
         }
         
-        private void HandleTargetChanged(GameObject target)
-        {
-            _currentTarget = target;
-        }
-
+        
         private void HandleUpgrade(TowerController controller)
         {
-            if (Model == false)
+            if (Model == false || Model.Guid != controller.Model.Guid)
             {
                 return;
             }
             
-            Debug.Log(Model.Cooldown.Value);
             _attackStrategy = AttackFactory.Create(new TowerAttackDTO(Model, attacks[_attackIndex], gameObject));
+        }
+        
+        private void HandleTargetChanged(GameObject target)
+        {
+            _currentTarget = target;
         }
         
         private void HandleTowerUpgrade(TowerController controller)
         {
+            if (Model == false || Model.Guid != controller.Model.Guid)
+            {
+                return;
+            }
+            
             if (_attackIndex + 1 >= attacks.Count)
             {
                 return;

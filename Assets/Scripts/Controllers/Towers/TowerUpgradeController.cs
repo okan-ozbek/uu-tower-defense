@@ -12,6 +12,8 @@ namespace Controllers.Towers
         
         protected override void Subscribe()
         {
+            
+            
             ButtonController.OnTowerIncreaseRangeClicked += HandleTowerIncreaseRange;
             ButtonController.OnTowerIncreaseSpeedClicked += HandleTowerIncreaseSpeed;
             ButtonController.OnTowerUpgradeClicked += HandleTowerUpgrade;     
@@ -26,6 +28,11 @@ namespace Controllers.Towers
         
         private void HandleTowerIncreaseRange(TowerController controller)
         {
+            if (Model.Guid != controller.Model.Guid)
+            {
+                return;
+            }
+            
             if (_rangeUpgradeCount < controller.Model.MaxRangeUpgrades && controller.Model.isRangeMaxed == false)
             {
                 controller.HandleTowerIncreaseRange();
@@ -37,6 +44,11 @@ namespace Controllers.Towers
         
         private void HandleTowerIncreaseSpeed(TowerController controller)
         {
+            if (Model.Guid != controller.Model.Guid)
+            {
+                return;
+            }
+            
             if (_speedUpgradeCount < controller.Model.MaxSpeedUpgrades && controller.Model.isSpeedMaxed == false)
             {
                 controller.HandleTowerIncreaseSpeed();
@@ -48,9 +60,13 @@ namespace Controllers.Towers
         
         private void HandleTowerUpgrade(TowerController controller)
         {
+            if (Model.Guid != controller.Model.Guid)
+            {
+                return;
+            }
+            
             if (_upgradeCount < controller.Model.MaxUpgradeUpgrades && controller.Model.isUpgradeMaxed == false)
             {
-                controller.HandleTowerUpgrade();
                 _upgradeCount++;
              
                 controller.Model.isUpgradeMaxed = _upgradeCount == controller.Model.MaxUpgradeUpgrades;

@@ -82,11 +82,6 @@ namespace Controllers.Towers
         {
             Model.Cooldown.Value -= (Model.BaseCooldown * 0.2f);
         }
-        
-        public void HandleTowerUpgrade()
-        {
-            
-        }
 
         private void SetRadius()
         {

@@ -7,6 +7,7 @@ using Models;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Utility;
+using Random = UnityEngine.Random;
 
 namespace Controllers.Towers
 {
@@ -56,6 +57,7 @@ namespace Controllers.Towers
             {
                 GameObject instance = Instantiate(_selectedTowerPrefab, placeholder.transform.position, Quaternion.identity);
                 instance.transform.parent = parent.transform;
+                instance.name = instance.name + Random.Range(100, 999);
                 
                 OnTowerPlaced?.Invoke(instance.GetComponent<Tower>());
                 _placedTowers.Add(instance);

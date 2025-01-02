@@ -153,6 +153,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: fd03a8fff60da7d45899b8c8cb6b80a2, type: 2}
+  isRangeMaxed: 0
+  isSpeedMaxed: 0
+  isUpgradeMaxed: 0
 --- !u!114 &8128484066354977482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,7 +193,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4301cd2d0ecd4410845c548af49090e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 1556038583772040932, guid: 924290840abc71c46a7ea51d1418a136, type: 3}
+  attacks:
+  - {fileID: 11400000, guid: 6db3a010eea91cf419fff47db78ae5c4, type: 2}
 --- !u!114 &1333175183719671923
 MonoBehaviour:
   m_ObjectHideFlags: 0
