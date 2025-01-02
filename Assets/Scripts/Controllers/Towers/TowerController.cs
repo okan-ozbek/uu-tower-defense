@@ -80,7 +80,8 @@ namespace Controllers.Towers
         
         public void HandleTowerIncreaseSpeed()
         {
-            Model.Cooldown.Value -= (Model.BaseCooldown * 0.2f);
+            
+            Model.Cooldown.Value -= (Model.Cooldown.Value * 0.2f);
         }
 
         private void SetRadius()

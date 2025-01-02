@@ -1,4 +1,5 @@
-﻿using Controllers.Towers;
+﻿using Controllers.Projectiles;
+using Controllers.Towers;
 using Controllers.Towers.Attacks;
 using Controllers.UI;
 using Models;
@@ -13,6 +14,7 @@ namespace Singletons
 
         [SerializeField] private AudioClip towerPlacementSFX;
         [SerializeField] private AudioClip towerShotSFX;
+        [SerializeField] private AudioClip explosionSFX;
 
         private float _sfxVolume;
         
@@ -23,6 +25,7 @@ namespace Singletons
             Settings.OnSoundEffectsChanged += HandleSoundEffectsChanged;
             TowerPlacementController.OnTowerPlaced += HandleTowerPlaced;
             AttackStrategy.OnAttack += HandleTowerShot;
+            ExplosiveProjectileController.OnExplosion += HandleExplosion;
         }
 
         private void OnDisable()
@@ -32,6 +35,7 @@ namespace Singletons
             Settings.OnSoundEffectsChanged -= HandleSoundEffectsChanged;
             TowerPlacementController.OnTowerPlaced -= HandleTowerPlaced;
             AttackStrategy.OnAttack -= HandleTowerShot;
+            ExplosiveProjectileController.OnExplosion -= HandleExplosion;
         }
 
         private void Start()
@@ -62,9 +66,14 @@ namespace Singletons
         
         private void HandleTowerShot()
         {
-            PlaySoundEffect(towerShotSFX, Random.Range(0.75f, 1.25f), 0.8f);
+            PlaySoundEffect(towerShotSFX, Random.Range(0.75f, 1.25f), 0.75f);
         }
 
+        private void HandleExplosion()
+        {
+            PlaySoundEffect(explosionSFX, Random.Range(0.75f, 1.25f), 1.8f);
+        }
+        
         private void PlaySoundEffect(AudioClip soundEffect, float pitch = 1.0f, float? length = null)
         {
             AudioSource instance = Instantiate(soundEffectPrefab, transform.position, Quaternion.identity);

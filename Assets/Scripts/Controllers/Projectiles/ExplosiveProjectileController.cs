@@ -11,6 +11,8 @@ namespace Controllers.Projectiles
     [RequireComponent(typeof(ExplosiveProjectile))]
     public class ExplosiveProjectileController : ProjectileController<ExplosiveProjectile>
     {
+        public static event Action OnExplosion;
+        
         [SerializeField] private GameObject explosiveProjectileBlast;
         
         private bool _explosionSpawned;
@@ -27,6 +29,7 @@ namespace Controllers.Projectiles
                 GameObject instance = Instantiate(explosiveProjectileBlast, transform.position, Quaternion.identity);
                 instance.transform.localScale = Vector2.one * (Model.Radius.Value * 2.0f);
                 _explosionSpawned = true;
+                OnExplosion?.Invoke();
             }
             
             foreach (GameObject target in GetTargets())
