@@ -13,16 +13,19 @@ namespace Controllers.UI
         [SerializeField] private Slider masterVolumeSlider;
         [SerializeField] private Slider soundEffectsSlider;
         [SerializeField] private Slider musicVolumeSlider;
+        [SerializeField] private Slider uiVolumeSlider;
 
         private float _unsavedMasterVolume;
         private float _unsavedSoundEffects;
         private float _unsavedMusicVolume;
+        private float _unsavedUIVolume;
         
         protected override void Subscribe()
         {
             masterVolumeSlider.onValueChanged.AddListener(value => Model.MasterVolume.Value = value);
             soundEffectsSlider.onValueChanged.AddListener(value => Model.SoundEffects.Value = value);
             musicVolumeSlider.onValueChanged.AddListener(value => Model.MusicVolume.Value = value);
+            uiVolumeSlider.onValueChanged.AddListener(value => Model.UIVolume.Value = value);
 
             ButtonController.OnApplySettingsClicked += HandleApplySettings;
             ButtonController.OnCancelSettingsClicked += HandleCancelSettings;
@@ -33,6 +36,7 @@ namespace Controllers.UI
             masterVolumeSlider.onValueChanged.RemoveAllListeners();
             soundEffectsSlider.onValueChanged.RemoveAllListeners();
             musicVolumeSlider.onValueChanged.RemoveAllListeners();
+            uiVolumeSlider.onValueChanged.RemoveAllListeners();
             
             ButtonController.OnApplySettingsClicked -= HandleApplySettings;
             ButtonController.OnCancelSettingsClicked -= HandleCancelSettings;
@@ -45,6 +49,7 @@ namespace Controllers.UI
             _unsavedMasterVolume = Model.MasterVolume.Value;
             _unsavedSoundEffects = Model.SoundEffects.Value;
             _unsavedMusicVolume = Model.MusicVolume.Value;
+            _unsavedUIVolume = Model.UIVolume.Value;
         }
         
         private void HandleApplySettings()
@@ -52,10 +57,12 @@ namespace Controllers.UI
             Model.MusicVolume.Value = musicVolumeSlider.value;
             Model.SoundEffects.Value = soundEffectsSlider.value;
             Model.MasterVolume.Value = masterVolumeSlider.value;
+            Model.UIVolume.Value = uiVolumeSlider.value;
             
             _unsavedMasterVolume = Model.MasterVolume.Value;
             _unsavedSoundEffects = Model.SoundEffects.Value;
             _unsavedMusicVolume = Model.MusicVolume.Value;
+            _unsavedUIVolume = Model.UIVolume.Value;
         }
 
         private void HandleCancelSettings()
@@ -63,6 +70,7 @@ namespace Controllers.UI
             Model.MasterVolume.Value = _unsavedMasterVolume;
             Model.SoundEffects.Value = _unsavedSoundEffects;
             Model.MusicVolume.Value = _unsavedMusicVolume;
+            Model.UIVolume.Value = _unsavedUIVolume;
             
             OnCancelSettings?.Invoke(Model);
         }

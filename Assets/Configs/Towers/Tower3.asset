@@ -18,5 +18,5 @@ MonoBehaviour:
   cooldown: 2
   isStationary: 0
   maxRangeUpgrades: 3
-  maxSpeedUpgrades: 3
-  maxUpgradeUpgrades: 3
+  maxSpeedUpgrades: 5
+  maxUpgradeUpgrades: 1

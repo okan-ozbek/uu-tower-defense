@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83851d9226fd40de95c11046b9e3848f, type: 3}
   m_Name: Tower3_Level1
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 8856065851948956114, guid: a87ef8c031eaa9249a786641cd06f18b, type: 3}
+  projectilePrefab: {fileID: 1556038583772040932, guid: 924290840abc71c46a7ea51d1418a136, type: 3}
   attackPatternType: 0
   count: 1
   burstCooldown: 0
