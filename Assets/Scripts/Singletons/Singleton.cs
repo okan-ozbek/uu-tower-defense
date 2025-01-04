@@ -2,18 +2,18 @@
 
 namespace Singletons
 {
-    public class Singleton<TInstance> : MonoBehaviour where TInstance : Component
+    public class Singleton : MonoBehaviour
     {
-        public static TInstance Instance { get; private set; }
-	
-        public virtual void Awake ()
+     	public static Singleton Instance { get; private set; }
+
+        private void Awake ()
         {
             if (Instance == null) {
-                Instance = this as TInstance;
-                DontDestroyOnLoad (this);
+                Instance = this;
+                DontDestroyOnLoad (gameObject);
             } else {
                 Destroy (gameObject);
             }
-        }
+        }   
     }
 }

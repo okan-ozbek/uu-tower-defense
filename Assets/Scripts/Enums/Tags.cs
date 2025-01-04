@@ -5,5 +5,6 @@
         Tower,
         Game,
         Enemy,
+        Transition,
     }
 }

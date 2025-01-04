@@ -60,7 +60,7 @@ namespace Controllers.Enemies
             if (PathController.HasReachedTheEnd(_currentWaypointIndex, transform.position))
             {
                 OnEnemyReachedEnd?.Invoke(Model);
-                Death();
+                Destroy(gameObject);
             }
         }
         
@@ -71,26 +71,30 @@ namespace Controllers.Enemies
             StartCoroutine(OnHit());
         }
 
-        private void Death()
-        {
-            OnEnemyDeath?.Invoke(Model);
-            Destroy(gameObject);
-        }
-
         private IEnumerator OnHit()
         {
             _spriteRenderer.color = Color.white;
-            transform.localScale *= 1.1f;
             
             yield return new WaitForSeconds(0.1f);
             
             if (Model.Health.Value <= 0)
             {
-                Death();
+                OnEnemyDeath?.Invoke(Model);
+                Destroy(gameObject);
+            }
+            else
+            {
+                const float duration = 0.1f; 
+                float elapsedTime = 0f;
+
+                while (elapsedTime < duration)
+                {
+                    _spriteRenderer.color = Color.Lerp(Color.white, _startColor, elapsedTime / duration);
+                    elapsedTime += Time.deltaTime;
+                    yield return null;
+                }
             }
             
-            _spriteRenderer.color = _startColor;
-            transform.localScale = _startTransform.localScale;
         }
     }
 }

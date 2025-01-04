@@ -19,6 +19,8 @@ namespace Controllers.UI
         
         [Header("Game specific")]
         [SerializeField] private Button startWaveButton;
+
+        [SerializeField] private Button gameLostButton;
         
         [Header("Quit game")] 
         [SerializeField] private Button exitGameButton;
@@ -37,6 +39,7 @@ namespace Controllers.UI
         public static event Action<TowerController> OnTowerSellClicked;
         public static event Action OnReturnFromStatsClicked;
         public static event Action OnStartWaveClicked;
+        public static event Action OnGameLostClicked;
         
         public static event Action OnExitGameClicked;
         public static event Action OnYesQuitGameClicked;
@@ -60,6 +63,7 @@ namespace Controllers.UI
             towerSellButton.onClick.AddListener(() => OnTowerSellClicked?.Invoke(_selectedTower));
             
             startWaveButton.onClick.AddListener(() => OnStartWaveClicked?.Invoke());
+            gameLostButton.onClick.AddListener(() => OnGameLostClicked?.Invoke());
             
             exitGameButton.onClick.AddListener(() => OnExitGameClicked?.Invoke());
             yesQuitGameButton.onClick.AddListener(() => OnYesQuitGameClicked?.Invoke());
@@ -81,6 +85,7 @@ namespace Controllers.UI
             towerSellButton.onClick.RemoveAllListeners();
             
             startWaveButton.onClick.RemoveAllListeners();
+            gameLostButton.onClick.RemoveAllListeners();
             
             settingsButton.onClick.RemoveAllListeners();
             applySettingsButton.onClick.RemoveAllListeners();

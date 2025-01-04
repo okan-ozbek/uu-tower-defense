@@ -16,6 +16,7 @@ namespace Controllers.UI
         private StartWaveContainer _startWaveContainer;
         private SettingsModal _settingsModal;
         private QuitGameModal _quitGameModal;
+        private LostGameModal _lostGameModal;
 
         private void Awake()
         {
@@ -24,6 +25,7 @@ namespace Controllers.UI
             _startWaveContainer = viewManager.GetComponent<StartWaveContainer>();
             _settingsModal = viewManager.GetComponent<SettingsModal>();
             _quitGameModal = viewManager.GetComponent<QuitGameModal>();
+            _lostGameModal = viewManager.GetComponent<LostGameModal>();
         }
         
         private void OnEnable()
@@ -43,6 +45,8 @@ namespace Controllers.UI
             MenuButtonController.OnSettingsClicked += EnableSettingsModal;
             MenuButtonController.OnApplySettingsClicked += DisableSettingsModal;
             MenuButtonController.OnCancelSettingsClicked += DisableSettingsModal;
+            
+            GameController.OnGameLost += EnableLostGameModal;
         }
         
         private void OnDisable()
@@ -62,6 +66,8 @@ namespace Controllers.UI
             MenuButtonController.OnSettingsClicked -= EnableSettingsModal;
             MenuButtonController.OnApplySettingsClicked -= DisableSettingsModal;
             MenuButtonController.OnCancelSettingsClicked -= DisableSettingsModal;
+            
+            GameController.OnGameLost -= EnableLostGameModal;
         }
 
         private void Update()
@@ -94,6 +100,13 @@ namespace Controllers.UI
         {
             PauseSingleton.Unpause();
             _settingsModal.Deactivate();
+        }
+        
+        private void EnableLostGameModal()
+        {
+            _lostGameModal.Activate();
+            _settingsModal.Deactivate();
+            _quitGameModal.Deactivate();
         }
         
         private void GetStatsPanel(TowerController controller)

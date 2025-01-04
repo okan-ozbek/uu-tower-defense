@@ -10,6 +10,7 @@ namespace Controllers
     public class GameController : Controller<Game>
     {
         public static event Action<float> OnTowerSelectedUpdateMoney;
+        public static event Action OnGameLost;
 
         protected override void Subscribe()
         {
@@ -33,6 +34,15 @@ namespace Controllers
             GameButtonController.OnTowerIncreaseSpeedClicked -= HandleTowerIncreaseSpeed;
             GameButtonController.OnTowerIncreaseRangeClicked -= HandleTowerIncreaseRange;
             GameButtonController.OnTowerUpgradeClicked -= HandleTowerUpgrade;
+        }
+
+        private void Update()
+        {
+            if (Model.Health.Value <= 0.0f)
+            {
+                Model.Health.Value = 0.0f;
+                OnGameLost?.Invoke();
+            }
         }
 
         private void HandleEnemyReachedEnd(Enemy enemy)
@@ -69,7 +79,7 @@ namespace Controllers
 
         private void HandleTowerUpgrade(TowerController controller)
         {
-            Model.Money.Value -= 1;
+            Model.Money.Value -= 100;
             controller.Model.Spent.Value += 100f;
         }
 

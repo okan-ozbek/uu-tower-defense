@@ -1,5 +1,4 @@
-﻿using System;
-using Utility;
+﻿using Utility;
 
 namespace Models
 {

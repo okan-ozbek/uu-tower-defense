@@ -17,6 +17,7 @@ namespace Controllers.Enemies
         [SerializeField] private List<GameObject> enemyPrefabs = new();
 
         private readonly List<GameObject> _enemies = new();
+        private readonly List<Guid> _enemyGuids = new();
 
         private int _enemiesInWave; 
         private int _currentWave;
@@ -70,7 +71,7 @@ namespace Controllers.Enemies
 
         private void PurchaseEnemies()
         {
-            List<GameObject> availableEnemies = new List<GameObject>(enemyPrefabs);
+            List<GameObject> availableEnemies = new(enemyPrefabs);
             
             while(_waveBudget > 0 && availableEnemies.Count > 0)
             {
@@ -85,11 +86,19 @@ namespace Controllers.Enemies
                 _waveBudget -= enemy.GetComponent<Enemy>().Cost;
             }
             
+            _enemiesInWave = 0;
             _enemiesInWave = _enemies.Count;
         }
         
         private void HandleEnemyDestroyed(Enemy enemy)
         {
+            if (_enemyGuids.Contains(enemy.Guid))
+            {
+                return;
+            }
+            
+            _enemyGuids.Add(enemy.Guid);
+            
             _enemiesInWave--;
             if (_enemiesInWave == 0)
             {

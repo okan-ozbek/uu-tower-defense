@@ -6,12 +6,10 @@ namespace Controllers
 {
     public class PathController : MonoBehaviour
     {
-        // public static bool RepeatPath;
         public static Transform[] Waypoints;
 
         private void Awake()
         {
-            // RepeatPath = (SceneManager.GetActiveScene().name == "Main screen");
             Waypoints = new Transform[transform.childCount];
             
             for (int i = 0; i < Waypoints.Length; i++)

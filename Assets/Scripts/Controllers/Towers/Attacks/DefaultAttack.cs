@@ -23,12 +23,15 @@ namespace Controllers.Towers.Attacks
 
         private IEnumerator BurstShot()
         {
+            Vector3 towerStaticPosition = TowerAttackDTO.Tower.transform.position;
+            Quaternion towerStaticRotation = TowerAttackDTO.Tower.transform.rotation;
+            
             for (int i = 0; i < TowerAttackDTO.Count; i++)
             {
                 Object.Instantiate(
                     TowerAttackDTO.ProjectilePrefab, 
-                    TowerAttackDTO.Tower.transform.position, 
-                    TowerAttackDTO.Tower.transform.rotation
+                    towerStaticPosition,
+                    towerStaticRotation
                 );
                 
                 InvokeOnAttack();

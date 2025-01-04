@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Singletons
 {
-    public class AudioSingleton : Singleton<AudioSingleton>
+    public class AudioSingleton : MonoBehaviour
     {
         [SerializeField] private AudioSource uiSoundPrefab;
         [SerializeField] private AudioSource soundEffectPrefab;

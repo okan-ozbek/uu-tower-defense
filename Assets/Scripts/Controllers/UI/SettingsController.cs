@@ -58,6 +58,7 @@ namespace Controllers.UI
         
         private void HandleApplySettings()
         {
+            Debug.Log("Applied");
             Model.MusicVolume.Value = musicVolumeSlider.value;
             Model.SoundEffects.Value = soundEffectsSlider.value;
             Model.MasterVolume.Value = masterVolumeSlider.value;

@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using System.Linq;
+using Models;
 using UnityEngine;
 
 namespace Controllers
@@ -9,7 +10,7 @@ namespace Controllers
 
         protected virtual void Awake()
         {
-            Model = GetComponent<TModel>();
+            Model = GetComponent<TModel>() ?? FindFirstObjectByType<TModel>();
         }
         
         private void OnEnable()
