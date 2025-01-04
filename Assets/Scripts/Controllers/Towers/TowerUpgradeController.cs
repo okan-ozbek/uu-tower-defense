@@ -14,16 +14,16 @@ namespace Controllers.Towers
         {
             
             
-            ButtonController.OnTowerIncreaseRangeClicked += HandleTowerIncreaseRange;
-            ButtonController.OnTowerIncreaseSpeedClicked += HandleTowerIncreaseSpeed;
-            ButtonController.OnTowerUpgradeClicked += HandleTowerUpgrade;     
+            GameButtonController.OnTowerIncreaseRangeClicked += HandleTowerIncreaseRange;
+            GameButtonController.OnTowerIncreaseSpeedClicked += HandleTowerIncreaseSpeed;
+            GameButtonController.OnTowerUpgradeClicked += HandleTowerUpgrade;     
         }
         
         protected override void Unsubscribe()
         {
-            ButtonController.OnTowerIncreaseRangeClicked -= HandleTowerIncreaseRange;
-            ButtonController.OnTowerIncreaseSpeedClicked -= HandleTowerIncreaseSpeed;
-            ButtonController.OnTowerUpgradeClicked -= HandleTowerUpgrade;
+            GameButtonController.OnTowerIncreaseRangeClicked -= HandleTowerIncreaseRange;
+            GameButtonController.OnTowerIncreaseSpeedClicked -= HandleTowerIncreaseSpeed;
+            GameButtonController.OnTowerUpgradeClicked -= HandleTowerUpgrade;
         }
         
         private void HandleTowerIncreaseRange(TowerController controller)

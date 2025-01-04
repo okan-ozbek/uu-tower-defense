@@ -26,14 +26,14 @@ namespace Controllers.Enemies
         {
             EnemyController.OnEnemyDeath += HandleEnemyDestroyed;
             EnemyController.OnEnemyReachedEnd += HandleEnemyDestroyed;
-            ButtonController.OnStartWaveClicked += HandleStartWaveClicked;
+            GameButtonController.OnStartWaveClicked += HandleStartWaveClicked;
         }
 
         private void OnDisable()
         {
             EnemyController.OnEnemyDeath -= HandleEnemyDestroyed;
             EnemyController.OnEnemyReachedEnd -= HandleEnemyDestroyed;
-            ButtonController.OnStartWaveClicked -= HandleStartWaveClicked;
+            GameButtonController.OnStartWaveClicked -= HandleStartWaveClicked;
         }
         
         private void HandleStartWaveClicked()

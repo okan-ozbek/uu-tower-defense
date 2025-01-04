@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Models;
 using UnityEngine;
 
@@ -12,9 +13,17 @@ namespace Controllers.Enemies
         public bool titleScreenEnemy;
         
         private int _currentWaypointIndex;
+        private Color _startColor;
+        private Transform _startTransform;
+        private SpriteRenderer _spriteRenderer;
 
         private void Start()
         {
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+            
+            _startColor = _spriteRenderer.color;
+            _startTransform = transform;
+            
             if (titleScreenEnemy)
             {
                 _currentWaypointIndex = PathController.GetClosestWaypointIndex(transform.position);
@@ -58,16 +67,30 @@ namespace Controllers.Enemies
         public void OnDamage(float value)
         {
             Model.Health.Value -= value;
-            if (Model.Health.Value <= 0)
-            {
-                OnEnemyDeath?.Invoke(Model);
-                Death();
-            }
+            
+            StartCoroutine(OnHit());
         }
 
         private void Death()
         {
+            OnEnemyDeath?.Invoke(Model);
             Destroy(gameObject);
+        }
+
+        private IEnumerator OnHit()
+        {
+            _spriteRenderer.color = Color.white;
+            transform.localScale *= 1.1f;
+            
+            yield return new WaitForSeconds(0.1f);
+            
+            if (Model.Health.Value <= 0)
+            {
+                Death();
+            }
+            
+            _spriteRenderer.color = _startColor;
+            transform.localScale = _startTransform.localScale;
         }
     }
 }

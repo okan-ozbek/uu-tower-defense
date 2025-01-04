@@ -27,13 +27,13 @@ namespace Controllers.Towers
         private void OnEnable()
         {
             ShopController.OnShopTowerClicked += HandleShopTowerClicked;
-            ButtonController.OnTowerSellClicked += HandleTowerSellClicked;
+            GameButtonController.OnTowerSellClicked += HandleTowerSellClicked;
         }
 
         private void OnDisable()
         {
             ShopController.OnShopTowerClicked -= HandleShopTowerClicked;
-            ButtonController.OnTowerSellClicked -= HandleTowerSellClicked;
+            GameButtonController.OnTowerSellClicked -= HandleTowerSellClicked;
         }
 
         private void Update()

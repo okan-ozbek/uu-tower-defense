@@ -16,16 +16,16 @@ namespace Controllers.Towers
         protected override void Subscribe()
         {
             TowerDetectionController.OnTargetChanged += HandleTargetChanged;
-            ButtonController.OnTowerSellClicked += HandleTowerSellClicked;
-            ButtonController.OnReturnFromStatsClicked += HandleTowerUnselected;
+            GameButtonController.OnTowerSellClicked += HandleTowerSellClicked;
+            GameButtonController.OnReturnFromStatsClicked += HandleTowerUnselected;
             MouseSelectionController.OnTowerSelected += HandleTowerSelected;
         }
 
         protected override void Unsubscribe()
         {
             TowerDetectionController.OnTargetChanged -= HandleTargetChanged;
-            ButtonController.OnTowerSellClicked -= HandleTowerSellClicked;
-            ButtonController.OnReturnFromStatsClicked -= HandleTowerUnselected;
+            GameButtonController.OnTowerSellClicked -= HandleTowerSellClicked;
+            GameButtonController.OnReturnFromStatsClicked -= HandleTowerUnselected;
             MouseSelectionController.OnTowerSelected -= HandleTowerSelected;
         }
 

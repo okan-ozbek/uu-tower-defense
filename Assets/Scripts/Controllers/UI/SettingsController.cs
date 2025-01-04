@@ -27,8 +27,10 @@ namespace Controllers.UI
             musicVolumeSlider.onValueChanged.AddListener(value => Model.MusicVolume.Value = value);
             uiVolumeSlider.onValueChanged.AddListener(value => Model.UIVolume.Value = value);
 
-            ButtonController.OnApplySettingsClicked += HandleApplySettings;
-            ButtonController.OnCancelSettingsClicked += HandleCancelSettings;
+            GameButtonController.OnApplySettingsClicked += HandleApplySettings;
+            GameButtonController.OnCancelSettingsClicked += HandleCancelSettings;
+            MenuButtonController.OnApplySettingsClicked += HandleApplySettings;
+            MenuButtonController.OnCancelSettingsClicked += HandleCancelSettings;
         }
         
         protected override void Unsubscribe()
@@ -38,8 +40,10 @@ namespace Controllers.UI
             musicVolumeSlider.onValueChanged.RemoveAllListeners();
             uiVolumeSlider.onValueChanged.RemoveAllListeners();
             
-            ButtonController.OnApplySettingsClicked -= HandleApplySettings;
-            ButtonController.OnCancelSettingsClicked -= HandleCancelSettings;
+            GameButtonController.OnApplySettingsClicked -= HandleApplySettings;
+            GameButtonController.OnCancelSettingsClicked -= HandleCancelSettings;
+            MenuButtonController.OnApplySettingsClicked -= HandleApplySettings;
+            MenuButtonController.OnCancelSettingsClicked -= HandleCancelSettings;
         }
 
         private void Start()

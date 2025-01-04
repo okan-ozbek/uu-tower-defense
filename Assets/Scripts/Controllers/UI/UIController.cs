@@ -29,29 +29,39 @@ namespace Controllers.UI
         private void OnEnable()
         {
             MouseSelectionController.OnTowerSelected += GetStatsPanel;
-            ButtonController.OnTowerSellClicked += GetShopPanel;
-            ButtonController.OnReturnFromStatsClicked += GetShopPanel;
+            GameButtonController.OnTowerSellClicked += GetShopPanel;
+            GameButtonController.OnReturnFromStatsClicked += GetShopPanel;
             
-            ButtonController.OnExitGameClicked += EnableExitGameModal;
-            ButtonController.OnNoQuitGameClicked += DisableExitGameModal;
+            GameButtonController.OnExitGameClicked += EnableExitGameModal;
+            GameButtonController.OnNoQuitGameClicked += DisableExitGameModal;
+            MenuButtonController.OnExitGameClicked += EnableExitGameModal;
+            MenuButtonController.OnNoQuitGameClicked += DisableExitGameModal;
             
-            ButtonController.OnSettingsClicked += EnableSettingsModal;
-            ButtonController.OnApplySettingsClicked += DisableSettingsModal;
-            ButtonController.OnCancelSettingsClicked += DisableSettingsModal;
+            GameButtonController.OnSettingsClicked += EnableSettingsModal;
+            GameButtonController.OnApplySettingsClicked += DisableSettingsModal;
+            GameButtonController.OnCancelSettingsClicked += DisableSettingsModal;
+            MenuButtonController.OnSettingsClicked += EnableSettingsModal;
+            MenuButtonController.OnApplySettingsClicked += DisableSettingsModal;
+            MenuButtonController.OnCancelSettingsClicked += DisableSettingsModal;
         }
         
         private void OnDisable()
         {
             MouseSelectionController.OnTowerSelected -= GetStatsPanel;
-            ButtonController.OnTowerSellClicked -= GetShopPanel;
-            ButtonController.OnReturnFromStatsClicked -= GetShopPanel;
+            GameButtonController.OnTowerSellClicked -= GetShopPanel;
+            GameButtonController.OnReturnFromStatsClicked -= GetShopPanel;
             
-            ButtonController.OnExitGameClicked -= EnableExitGameModal;
-            ButtonController.OnNoQuitGameClicked -= DisableExitGameModal;
+            GameButtonController.OnExitGameClicked -= EnableExitGameModal;
+            GameButtonController.OnNoQuitGameClicked -= DisableExitGameModal;
+            MenuButtonController.OnExitGameClicked -= EnableExitGameModal;
+            MenuButtonController.OnNoQuitGameClicked -= DisableExitGameModal;
             
-            ButtonController.OnSettingsClicked -= EnableSettingsModal;
-            ButtonController.OnApplySettingsClicked -= DisableSettingsModal;
-            ButtonController.OnCancelSettingsClicked -= DisableSettingsModal;
+            GameButtonController.OnSettingsClicked -= EnableSettingsModal;
+            GameButtonController.OnApplySettingsClicked -= DisableSettingsModal;
+            GameButtonController.OnCancelSettingsClicked -= DisableSettingsModal;
+            MenuButtonController.OnSettingsClicked -= EnableSettingsModal;
+            MenuButtonController.OnApplySettingsClicked -= DisableSettingsModal;
+            MenuButtonController.OnCancelSettingsClicked -= DisableSettingsModal;
         }
 
         private void Update()

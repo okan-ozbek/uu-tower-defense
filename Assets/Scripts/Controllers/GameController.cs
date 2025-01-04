@@ -17,10 +17,10 @@ namespace Controllers
             EnemyController.OnEnemyReachedEnd += HandleEnemyReachedEnd;
             TowerPlacementController.OnTowerPlaced += HandleTowerPlaced;
             MouseSelectionController.OnTowerSelected += HandleTowerSelected;
-            ButtonController.OnTowerSellClicked += HandleTowerSellClicked;
-            ButtonController.OnTowerIncreaseSpeedClicked += HandleTowerIncreaseSpeed;
-            ButtonController.OnTowerIncreaseRangeClicked += HandleTowerIncreaseRange;
-            ButtonController.OnTowerUpgradeClicked += HandleTowerUpgrade;
+            GameButtonController.OnTowerSellClicked += HandleTowerSellClicked;
+            GameButtonController.OnTowerIncreaseSpeedClicked += HandleTowerIncreaseSpeed;
+            GameButtonController.OnTowerIncreaseRangeClicked += HandleTowerIncreaseRange;
+            GameButtonController.OnTowerUpgradeClicked += HandleTowerUpgrade;
         }
 
         protected override void Unsubscribe()
@@ -29,10 +29,10 @@ namespace Controllers
             EnemyController.OnEnemyReachedEnd -= HandleEnemyReachedEnd;
             TowerPlacementController.OnTowerPlaced -= HandleTowerPlaced;
             MouseSelectionController.OnTowerSelected -= HandleTowerSelected;
-            ButtonController.OnTowerSellClicked -= HandleTowerSellClicked;
-            ButtonController.OnTowerIncreaseSpeedClicked -= HandleTowerIncreaseSpeed;
-            ButtonController.OnTowerIncreaseRangeClicked -= HandleTowerIncreaseRange;
-            ButtonController.OnTowerUpgradeClicked -= HandleTowerUpgrade;
+            GameButtonController.OnTowerSellClicked -= HandleTowerSellClicked;
+            GameButtonController.OnTowerIncreaseSpeedClicked -= HandleTowerIncreaseSpeed;
+            GameButtonController.OnTowerIncreaseRangeClicked -= HandleTowerIncreaseRange;
+            GameButtonController.OnTowerUpgradeClicked -= HandleTowerUpgrade;
         }
 
         private void HandleEnemyReachedEnd(Enemy enemy)

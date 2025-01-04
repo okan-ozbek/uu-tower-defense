@@ -21,17 +21,17 @@ namespace Controllers.Towers
 
         protected override void Subscribe()
         {
-            ButtonController.OnTowerIncreaseRangeClicked += HandleUpgrade;
-            ButtonController.OnTowerIncreaseSpeedClicked += HandleUpgrade;
-            ButtonController.OnTowerUpgradeClicked += HandleTowerUpgrade;
+            GameButtonController.OnTowerIncreaseRangeClicked += HandleUpgrade;
+            GameButtonController.OnTowerIncreaseSpeedClicked += HandleUpgrade;
+            GameButtonController.OnTowerUpgradeClicked += HandleTowerUpgrade;
             TowerDetectionController.OnTargetChanged += HandleTargetChanged;
         }
         
         protected override void Unsubscribe()
         {
-            ButtonController.OnTowerIncreaseRangeClicked -= HandleUpgrade;
-            ButtonController.OnTowerIncreaseSpeedClicked -= HandleUpgrade;
-            ButtonController.OnTowerUpgradeClicked += HandleTowerUpgrade;
+            GameButtonController.OnTowerIncreaseRangeClicked -= HandleUpgrade;
+            GameButtonController.OnTowerIncreaseSpeedClicked -= HandleUpgrade;
+            GameButtonController.OnTowerUpgradeClicked += HandleTowerUpgrade;
             TowerDetectionController.OnTargetChanged -= HandleTargetChanged;
         }
 
