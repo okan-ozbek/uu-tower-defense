@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using Utility;
 using Random = UnityEngine.Random;
+using Vector3 = System.Numerics.Vector3;
 
 namespace Controllers.Towers
 {
@@ -55,9 +56,12 @@ namespace Controllers.Towers
         {
             if (_selectedTowerPrefab && UserInput.OnLeftMouseClick() && CanPlaceTower(mousePosition))
             {
-                GameObject instance = Instantiate(_selectedTowerPrefab, placeholder.transform.position, Quaternion.identity);
+                Vector2 closestWaypoint = PathController.GetClosestWaypoint(placeholder.transform.position);
+                Vector2 direction = closestWaypoint - (Vector2)transform.position;
+                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90.0f;
+                
+                GameObject instance = Instantiate(_selectedTowerPrefab, placeholder.transform.position, Quaternion.Euler(0.0f, 0.0f, angle));
                 instance.transform.parent = parent.transform;
-                instance.name = instance.name + Random.Range(100, 999);
                 
                 OnTowerPlaced?.Invoke(instance.GetComponent<Tower>());
                 _placedTowers.Add(instance);

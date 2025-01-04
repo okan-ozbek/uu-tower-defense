@@ -35,11 +35,13 @@ namespace Controllers.Towers
             {
                 return;
             }
+
+            if (target == false)
+            {
+                return;
+            }
             
-            Vector3 targetPosition = (target) 
-                ? (Vector2)target.transform.position
-                : PathController.GetClosestWaypoint(transform.position);
-            
+            Vector3 targetPosition = target.transform.position;
             Vector2 direction = targetPosition - transform.position;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90.0f;
             transform.rotation = Quaternion.Euler(0.0f, 0.0f, angle);
