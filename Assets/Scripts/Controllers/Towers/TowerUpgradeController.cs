@@ -1,4 +1,5 @@
-﻿using Controllers.UI;
+﻿using System;
+using Controllers.UI;
 using Models;
 using UnityEngine;
 
@@ -6,14 +7,14 @@ namespace Controllers.Towers
 {
     public class TowerUpgradeController : Controller<Tower>
     {
+        public static event Action<TowerController> OnTowerUpgraded;
+        
         private int _rangeUpgradeCount = 0;
         private int _speedUpgradeCount = 0;
         private int _upgradeCount = 0;
         
         protected override void Subscribe()
         {
-            
-            
             GameButtonController.OnTowerIncreaseRangeClicked += HandleTowerIncreaseRange;
             GameButtonController.OnTowerIncreaseSpeedClicked += HandleTowerIncreaseSpeed;
             GameButtonController.OnTowerUpgradeClicked += HandleTowerUpgrade;     
@@ -40,6 +41,8 @@ namespace Controllers.Towers
                 
                 controller.Model.isRangeMaxed = _rangeUpgradeCount == controller.Model.MaxRangeUpgrades;
             }
+            
+            OnTowerUpgraded?.Invoke(controller);
         }
         
         private void HandleTowerIncreaseSpeed(TowerController controller)
@@ -56,6 +59,8 @@ namespace Controllers.Towers
                 
                 controller.Model.isSpeedMaxed = _speedUpgradeCount == controller.Model.MaxSpeedUpgrades;
             }
+            
+            OnTowerUpgraded?.Invoke(controller);
         }
         
         private void HandleTowerUpgrade(TowerController controller)
@@ -71,6 +76,8 @@ namespace Controllers.Towers
              
                 controller.Model.isUpgradeMaxed = _upgradeCount == controller.Model.MaxUpgradeUpgrades;
             }
+            
+            OnTowerUpgraded?.Invoke(controller);
         }
     }
 }

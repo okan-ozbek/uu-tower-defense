@@ -5,6 +5,7 @@ using System.Linq;
 using Controllers.UI;
 using Models;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 using Utility;
 using Random = UnityEngine.Random;
@@ -19,7 +20,7 @@ namespace Controllers.Towers
         
         [SerializeField] private GameObject placeholder;
         [SerializeField] private float invisibilitySeconds = 0.3f;
-        [SerializeField] private float minDistance = 1.25f;
+        [SerializeField] private float minDistance = 3f;
         [SerializeField] private GameObject parent;
         
         private GameObject _selectedTowerPrefab;
@@ -102,8 +103,9 @@ namespace Controllers.Towers
         {
             GameObject closestTower = _placedTowers.OrderBy(tower => Vector2.Distance(tower.transform.position, mousePosition)).FirstOrDefault();
             bool nearTower = closestTower && Vector2.Distance(closestTower.transform.position, mousePosition) <= minDistance;
+            bool isOverUI = EventSystem.current.IsPointerOverGameObject();
             
-            return PathController.InbetweenWaypoints(mousePosition) == false && nearTower == false;
+            return PathController.InbetweenWaypoints(mousePosition) == false && nearTower == false && isOverUI == false;
         }
 
         private void HandleShopTowerClicked(GameObject towerPrefab)

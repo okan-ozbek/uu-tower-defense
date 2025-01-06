@@ -44,24 +44,22 @@ namespace Views
         
         private void OnMasterVolumeValueChanged(float value)
         {
-            soundEffectsSlider.value = Mathf.Min(soundEffectsSlider.value, value);
-            musicVolumeSlider.value = Mathf.Min(musicVolumeSlider.value, value);
-            uiVolumeSlider.value = Mathf.Min(uiVolumeSlider.value, value);
+            masterVolumeSlider.value = value;
         }
         
         private void OnSoundEffectsVolumeValueChanged(float value)
         {
-            masterVolumeSlider.value = Mathf.Max(masterVolumeSlider.value, value);
+            soundEffectsSlider.value = value;
         }
         
         private void OnMusicVolumeValueChanged(float value)
         {
-            masterVolumeSlider.value = Mathf.Max(masterVolumeSlider.value, value);
+            musicVolumeSlider.value = value;
         }
         
         private void OnUIVolumeValueChanged(float value)
         {
-            masterVolumeSlider.value = Mathf.Max(masterVolumeSlider.value, value);
+            uiVolumeSlider.value = value;
         }
     }
 }

@@ -6,24 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="756c7f63-9f78-4925-85f6-3229373c16b7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.uu-tower-defense/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.uu-tower-defense/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Environment/AOE Turret.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Environment/AOE Turret.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Environment/Cannon Turret.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Environment/Cannon Turret.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Environment/Simple Turret.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Environment/Simple Turret.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UI/Main/AOE.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/UI/Main/AOE.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UI/Main/Cannon.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/UI/Main/Cannon.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UI/Main/Increase Range.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/UI/Main/Increase Range.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UI/Main/Increase Speed.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/UI/Main/Increase Speed.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UI/Main/Rectangle 79.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/UI/Main/Rectangle 79.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UI/Main/Simple.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/UI/Main/Simple.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UI/Main/Upgrade turret.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/UI/Main/Upgrade turret.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Audio/button-hover.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Audio/button-hover.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/PerformanceTestRunInfo.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/PerformanceTestRunInfo.json.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/PerformanceTestRunSettings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/PerformanceTestRunSettings.json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/Enemies/EnemyController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/Enemies/EnemyController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/PathController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/PathController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/Towers/TowerAttackController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/Towers/TowerAttackController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/Towers/TowerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/Towers/TowerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/Towers/TowerDetectionController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/Towers/TowerDetectionController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/Towers/TowerPlacementController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/Towers/TowerPlacementController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/Towers/TowerUpgradeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/Towers/TowerUpgradeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/UI/SettingsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/UI/SettingsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Singletons/SingletonOld.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Singletons/SingletonOld.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Views/SettingsModal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Views/SettingsModal.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Views/UpgradePanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Views/UpgradePanel.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

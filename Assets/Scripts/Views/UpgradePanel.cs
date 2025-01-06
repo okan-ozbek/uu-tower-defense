@@ -9,7 +9,6 @@ using Enums;
 using Models;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Views
@@ -27,6 +26,7 @@ namespace Views
             GameController.OnTowerSelectedUpdateMoney += HandleMoneyChanged;
             Game.OnMoneyChanged += HandleMoneyChanged;
             MouseSelectionController.OnTowerSelected += HandleTowerSelected;
+            TowerUpgradeController.OnTowerUpgraded += HandleTowerUpgraded;
         }
     
         protected override void Unsubscribe()
@@ -34,6 +34,7 @@ namespace Views
             GameController.OnTowerSelectedUpdateMoney -= HandleMoneyChanged;
             Game.OnMoneyChanged -= HandleMoneyChanged;
             MouseSelectionController.OnTowerSelected -= HandleTowerSelected;
+            TowerUpgradeController.OnTowerUpgraded += HandleTowerUpgraded;
         }
 
         private void Update()
@@ -68,6 +69,11 @@ namespace Views
         private void HandleTowerDeselected(TowerController controller)
         {
             _selectedTowerGuid = Guid.Empty;
+        }
+
+        private void HandleTowerUpgraded(TowerController controller)
+        {
+            sellButton.GetComponentInChildren<TMP_Text>().text = $"Sell (${controller.Model.Sell})";
         }
 
         private void CheckInteractableButtons()

@@ -91,29 +91,29 @@ namespace Controllers
             return closestWaypointIndex;
         }
         
-        private void OnDrawGizmos()
-        {
-            if (Waypoints == null || Waypoints.Length == 0) return;
-
-            const float margin = 0.5f;
-            Gizmos.color = Color.blue;
-
-            for (int i = 0; i < Waypoints.Length - 1; i++)
-            {
-                Vector2 min = new Vector2(
-                    Mathf.Min(Waypoints[i].position.x, Waypoints[i + 1].position.x) - margin,
-                    Mathf.Min(Waypoints[i].position.y, Waypoints[i + 1].position.y) - margin
-                );
-                Vector2 max = new Vector2(
-                    Mathf.Max(Waypoints[i].position.x, Waypoints[i + 1].position.x) + margin,
-                    Mathf.Max(Waypoints[i].position.y, Waypoints[i + 1].position.y) + margin
-                );
-
-                Vector2 size = max - min;
-                Vector2 center = min + size / 2;
-
-                Gizmos.DrawWireCube(center, size);
-            }
-        }
+        // private void OnDrawGizmos()
+        // {
+        //     if (Waypoints == null || Waypoints.Length == 0) return;
+        //
+        //     const float margin = 0.5f;
+        //     Gizmos.color = Color.blue;
+        //
+        //     for (int i = 0; i < Waypoints.Length - 1; i++)
+        //     {
+        //         Vector2 min = new Vector2(
+        //             Mathf.Min(Waypoints[i].position.x, Waypoints[i + 1].position.x) - margin,
+        //             Mathf.Min(Waypoints[i].position.y, Waypoints[i + 1].position.y) - margin
+        //         );
+        //         Vector2 max = new Vector2(
+        //             Mathf.Max(Waypoints[i].position.x, Waypoints[i + 1].position.x) + margin,
+        //             Mathf.Max(Waypoints[i].position.y, Waypoints[i + 1].position.y) + margin
+        //         );
+        //
+        //         Vector2 size = max - min;
+        //         Vector2 center = min + size / 2;
+        //
+        //         Gizmos.DrawWireCube(center, size);
+        //     }
+        // }
     }
 }

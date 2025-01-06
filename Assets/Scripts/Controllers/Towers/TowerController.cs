@@ -29,8 +29,13 @@ namespace Controllers.Towers
             MouseSelectionController.OnTowerSelected -= HandleTowerSelected;
         }
 
-        private void HandleTargetChanged(GameObject target)
+        private void HandleTargetChanged(GameObject target, TowerController controller)
         {
+            if (Model.Guid != controller.Model.Guid)
+            {
+                return;
+            }
+            
             if (Model.IsStationary)
             {
                 return;

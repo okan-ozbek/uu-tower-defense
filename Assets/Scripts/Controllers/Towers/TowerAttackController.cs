@@ -56,8 +56,13 @@ namespace Controllers.Towers
             _attackStrategy = AttackFactory.Create(new TowerAttackDTO(Model, attacks[_attackIndex], gameObject));
         }
         
-        private void HandleTargetChanged(GameObject target)
+        private void HandleTargetChanged(GameObject target, TowerController controller)
         {
+            if (Model.Guid != controller.Model.Guid)
+            {
+                return;
+            }
+            
             _currentTarget = target;
         }
         

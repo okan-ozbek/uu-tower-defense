@@ -8,7 +8,7 @@ namespace Controllers.Towers
 {
     public class TowerDetectionController : Controller<Tower>
     {
-        public static event Action<GameObject> OnTargetChanged;
+        public static event Action<GameObject, TowerController> OnTargetChanged;
         
         private GameObject _currentTarget;
         private GameObject _previousTarget;
@@ -16,7 +16,7 @@ namespace Controllers.Towers
         private void Update()
         {
             _currentTarget = GetTarget();
-            OnTargetChanged?.Invoke(_currentTarget);
+            OnTargetChanged?.Invoke(_currentTarget, GetComponent<TowerController>());
         }
         
         private List<GameObject> GetEnemiesInRange()
