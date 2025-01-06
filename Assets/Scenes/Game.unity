@@ -12661,7 +12661,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   placeholder: {fileID: 447553345}
   invisibilitySeconds: 0.3
-  minDistance: 0.75
+  minDistance: 1.2
   parent: {fileID: 637573725}
 --- !u!1 &1829093601
 GameObject:

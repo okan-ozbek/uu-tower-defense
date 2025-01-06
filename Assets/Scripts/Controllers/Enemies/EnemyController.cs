@@ -19,8 +19,6 @@ namespace Controllers.Enemies
 
         private void Start()
         {
-            Debug.Log(PathController.GetClosestWaypointIndex(transform.position));
-            
             _spriteRenderer = GetComponent<SpriteRenderer>();
             
             _startColor = _spriteRenderer.color;
@@ -44,8 +42,6 @@ namespace Controllers.Enemies
                 PathController.Waypoints[_currentWaypointIndex].position, 
                 Model.Speed.Value * Time.deltaTime
             );
-
-            Debug.Log(transform.position);
             
             if (PathController.CanRetrieveNextWaypoint(_currentWaypointIndex, transform.position))
             {
